@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preScheduleTime: 1
-  soundtrack: {fileID: 11400000, guid: 51ea836ee022bef44bf34848453cede1, type: 2}
+  soundtrack: {fileID: 11400000, guid: 8f32df6a60c472e449158bf4bf99ccb8, type: 2}
 --- !u!81 &1742525685
 AudioListener:
   m_ObjectHideFlags: 0
