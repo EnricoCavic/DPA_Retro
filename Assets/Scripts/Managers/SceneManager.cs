@@ -1,6 +1,5 @@
 using Retro.Generic;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -14,6 +13,8 @@ namespace Retro.Managers
         [SerializeField] private AssetReference firstScene;
 
         private SceneInstance loadedScene;
+
+        public event Action onLoadSceneCompleted;
 
         private void Awake()
         {
