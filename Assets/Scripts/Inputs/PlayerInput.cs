@@ -33,10 +33,10 @@ public class PlayerInput : MonoBehaviour, IGiveInput
 
     }
 
-    //public Vector3 GetMoveTarget(Vector3 _currentPosition)
-    //{
-        
-    //}
+    public Vector3 GetMoveTarget(Vector3 _currentPosition)
+    {
+        return Vector3.zero;
+    }
 
 
 }
