@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour, IGiveInput
     Vector2 mousePosition;
     Ray screenToRay;
 
-    Vector2 moveTarget;
+    Vector3 moveTarget;
 
     public bool startAttack { get; set; }
 
@@ -35,7 +35,9 @@ public class PlayerInput : MonoBehaviour, IGiveInput
 
     public Vector3 GetMoveTarget(Vector3 _currentPosition)
     {
-        return Vector3.zero;
+        moveTarget = inputActions.Gameplay.Move.ReadValue<Vector2>();
+        return _currentPosition + moveTarget;
+        
     }
 
 
