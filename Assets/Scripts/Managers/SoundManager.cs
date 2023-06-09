@@ -43,7 +43,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (AudioSettings.dspTime + preScheduleTime > nextEventTime)
         {
-            Debug.Log("Schedule next event");
+            //Debug.Log("Schedule next event");
             // lógica para escolher as próxima musica
             // possibilidade de existir uma fila de faixas populada dinamicamente
             // também será necessário fazer uma pool audio sources liberadas
