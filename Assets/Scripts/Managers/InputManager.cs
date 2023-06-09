@@ -1,18 +1,22 @@
+using Retro.Generic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+namespace Retro.Managers
 {
-    // Start is called before the first frame update
-    void Start()
+    public class InputManager : Singleton<InputManager>
     {
-        
-    }
+        public PlayerActions inputActions;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Awake()
+        {
+            if (!InstanceSetup(this)) return;
+
+            inputActions = new();
+            inputActions.Enable();
+        }
     }
 }
