@@ -10,7 +10,7 @@ namespace Retro.Managers
         void Start()
         {
             var loadSceneHandle = Addressables.LoadSceneAsync(gameplayManagers, LoadSceneMode.Additive);
-            loadSceneHandle.Completed += (handle) => SceneManager.UnloadSceneAsync(gameObject.scene);
+            loadSceneHandle.Completed += (handle) => UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(gameObject.scene);
         }
     }
 }
