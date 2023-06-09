@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 
-public interface IGiveInput
+namespace Retro.Character.Input
 {
-    Action OnFireStart { get; set; }
-    Action OnFireCanceled { get; set; }
+    public interface IGiveInput
+    {
+        Action OnFireStart { get; set; }
+        Action OnFireCanceled { get; set; }
 
-    Vector3 GetMoveTarget(Vector3 _currentPosition);
-    Vector2 GetLookTarget();
+        Vector3 GetMoveTarget(Vector3 _currentPosition);
+        Vector2 GetLookTarget();
+    }
 }

@@ -2,40 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Retro.Managers;
+using Retro.Character.Input;
 
-public class PlayerMovement : MonoBehaviour
+namespace Retro.Character
 {
-    IGiveInput playerInput;
-
-    Vector2 lookTarget;
-
-
-    private void Awake()
+    public class PlayerMovement : MonoBehaviour
     {
-        playerInput = GetComponent<PlayerInput>();
+        IGiveInput playerInput;
+
+        Vector2 lookTarget;
+
+
+        private void Awake()
+        {
+            playerInput = GetComponent<PlayerInput>();
+        }
+
+        void Update()
+        {
+            PlayerLookAt();
+
+        }
+
+        void PlayerLookAt()
+        {
+            lookTarget = playerInput.GetLookTarget();
+
+            transform.LookAt(new Vector3(lookTarget.x, 0, lookTarget.y));
+
+            var rotTarget = new Vector3(0, transform.eulerAngles.y, 0);
+            transform.eulerAngles = rotTarget;
+        }
+
+        void MovePlayer()
+        {
+
+        }
+
+
+
     }
-
-    void Update()
-    {
-        PlayerLookAt();
-        
-    }
-
-    void PlayerLookAt()
-    {
-        lookTarget = playerInput.GetLookTarget();
-
-        transform.LookAt(new Vector3(lookTarget.x, 0, lookTarget.y));
-
-        var rotTarget = new Vector3(0, this.transform.eulerAngles.y, 0);
-        this.transform.eulerAngles = rotTarget;
-    }
-
-    void MovePlayer() 
-    { 
-
-    }
-
-
-
 }
