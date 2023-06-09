@@ -2,26 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Retro.Managers;
+using System;
+using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour, IGiveInput
 {
-    PlayerActions inputActions;
-    Camera mainCam;
+    private PlayerActions inputActions;
+    private Camera mainCam;
 
-    Vector2 mousePosition;
-    Ray screenToRay;
+    private Vector2 mousePosition;
+    private Ray screenToRay;
+    private Vector3 moveTarget;
 
-    Vector3 moveTarget;
+    public Action OnFireStart { get; set; }
+    public Action OnFireCanceled { get; set; }
 
-    public bool startAttack { get; set; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         inputActions = InputManager.Instance.inputActions;
         mainCam = Camera.main;
     }
 
+    private void OnEnable()
+    {
+        inputActions.Gameplay.Fire.performed += FirePerformed;
+        inputActions.Gameplay.Fire.canceled += FireCanceled;
+    }
+    
+    private void OnDisable()
+    {
+        inputActions.Gameplay.Fire.performed -= FirePerformed;
+        inputActions.Gameplay.Fire.canceled -= FireCanceled;
+    }
+
+    private void FirePerformed(InputAction.CallbackContext obj) => OnFireStart?.Invoke();
+    private void FireCanceled(InputAction.CallbackContext obj) => OnFireCanceled?.Invoke();
 
     public Vector2 GetLookTarget()
     {
@@ -37,7 +53,6 @@ public class PlayerInput : MonoBehaviour, IGiveInput
     {
         moveTarget = inputActions.Gameplay.Move.ReadValue<Vector2>();
         return _currentPosition + moveTarget;
-        
     }
 
 

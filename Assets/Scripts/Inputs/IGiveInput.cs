@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public interface IGiveInput
 {
-    bool startAttack { get; set; }
+    Action OnFireStart { get; set; }
+    Action OnFireCanceled { get; set; }
 
     Vector3 GetMoveTarget(Vector3 _currentPosition);
-
     Vector2 GetLookTarget();
 }
