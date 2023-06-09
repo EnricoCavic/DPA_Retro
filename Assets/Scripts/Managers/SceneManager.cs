@@ -37,6 +37,7 @@ namespace Retro.Managers
             {
                 loadedScene = new();
                 loadedScene = operation.Result;
+                onLoadSceneCompleted?.Invoke();
             };
 
             return handle;

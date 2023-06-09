@@ -456,20 +456,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44049588fd04a514b8f56b48244c0af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSoundtrackChannels: 6
-  bpm: 140
-  numBeatsPerSegment: 16
   preScheduleTime: 1
-  clipsTrack1:
-  - {fileID: 8300000, guid: 9c77890240f762c42af9db1d63f1fe72, type: 3}
-  - {fileID: 8300000, guid: bed43d6a45e754a4ca9758f08b5aebbf, type: 3}
-  - {fileID: 8300000, guid: 8ad638760216b8141ad68c28b0d42766, type: 3}
-  clipsTrack2:
-  - {fileID: 8300000, guid: 36765ac5a11d5e346bb1bf62385afd1a, type: 3}
-  - {fileID: 8300000, guid: 8ba13a23edcfa5044ba853dfd75b0f6a, type: 3}
-  clipsTrack3:
-  - {fileID: 8300000, guid: 5d7d79d8fb722344a9c003ade6ba5ede, type: 3}
-  - {fileID: 8300000, guid: 8938380bb3dbe6e42a0124561d5cbba4, type: 3}
+  soundtrack: {fileID: 11400000, guid: 51ea836ee022bef44bf34848453cede1, type: 2}
 --- !u!81 &1742525685
 AudioListener:
   m_ObjectHideFlags: 0
