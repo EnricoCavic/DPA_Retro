@@ -19,6 +19,7 @@ namespace Retro.Managers
         private void Awake()
         {
             if (!InstanceSetup(this)) return;
+            if (firstScene == null) return;
 
             var handle = Addressables.LoadSceneAsync(firstScene, LoadSceneMode.Additive);
             handle.Completed += (operation) =>
