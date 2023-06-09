@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Retro.Managers;
 using Retro.Character.Input;
+using UnityEngine.AI;
 
 namespace Retro.Character
 {
@@ -11,17 +12,20 @@ namespace Retro.Character
         IGiveInput playerInput;
 
         Vector2 lookTarget;
+        NavMeshAgent agent;
+
 
 
         private void Awake()
         {
             playerInput = GetComponent<PlayerInput>();
+            agent = GetComponent<NavMeshAgent>();
         }
 
         void Update()
         {
             PlayerLookAt();
-
+            MovePlayer();
         }
 
         void PlayerLookAt()
@@ -34,9 +38,13 @@ namespace Retro.Character
             transform.eulerAngles = rotTarget;
         }
 
+
         void MovePlayer()
         {
+            var target = playerInput.GetMoveTarget(transform.position);
 
+            Debug.Log($"X: {target.x} | Y: {target.y} | Z: {target.z} ");
+            agent.SetDestination(target);
         }
 
 
