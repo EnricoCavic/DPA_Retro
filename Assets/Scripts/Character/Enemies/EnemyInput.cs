@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 using Retro.Character.Input;
 using System;
 
@@ -13,39 +10,39 @@ public class EnemyInput : MonoBehaviour, IGiveInput
     enum EnemyRoutine { None, Chasing, Attaking, HitStun }
     private EnemyRoutine currentRoutine = EnemyRoutine.None;
 
-    public float attackDistance = 10f;
-    public float fireInterval = 0.5f;
+        public EnemyRoutineDataSO data;
 
-    public Transform attackTarget;
-    private Vector3 movePosition;
-    private float distanceToTarget;
-    private float currentFireInterval;
+        public Transform attackTarget;
+        private Vector3 movePosition;
 
-    public Action OnFireStart { get; set; }
-    public Action OnFireCanceled { get; set; }
+        private float distanceToTarget;
+        private float currentFireInterval;
 
-    public Action OnMoveStart { get; set; }
-    public Action OnMoveCanceled { get; set; }
+        public Action OnFireStart { get; set; }
+        public Action OnFireCanceled { get; set; }
 
-    private NavMeshAgent agent;
+        public Action OnMoveStart { get; set; }
+        public Action OnMoveCanceled { get; set; }
 
-    private void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        movePosition = new();
-        currentRoutine = EnemyRoutine.Chasing;
-    }
+        private NavMeshAgent agent;
 
-    private void Update()
-    {
-        distanceToTarget = Vector3.Distance(attackTarget.position, transform.position);
-        currentFireInterval += Time.deltaTime;
-
-        switch (currentRoutine)
+        private void Awake()
         {
-            case EnemyRoutine.Chasing:
-                FollowRoutine();
-                break;     
+            agent = GetComponent<NavMeshAgent>();
+            movePosition = new();
+            currentRoutine = EnemyRoutine.Chasing;
+        }
+
+        private void Update()
+        {
+            distanceToTarget = Vector3.Distance(attackTarget.position, transform.position);
+            currentFireInterval += Time.deltaTime;
+
+            switch (currentRoutine)
+            {
+                case EnemyRoutine.Chasing:
+                    FollowRoutine();
+                    break;
 
             case EnemyRoutine.Attaking:
                 FireRoutine();
@@ -55,36 +52,36 @@ public class EnemyInput : MonoBehaviour, IGiveInput
             
         }
 
-    }
-
-    private void FollowRoutine()
-    {
-        if (distanceToTarget <= attackDistance)
-        {
-            currentRoutine = EnemyRoutine.Attaking;
-            return;
         }
 
-        movePosition = attackTarget.position;
-
-    }
-
-    private void FireRoutine()
-    {
-        if (distanceToTarget > attackDistance)
+        private void FollowRoutine()
         {
-            currentRoutine = EnemyRoutine.Chasing;
-            return;
+            if (distanceToTarget <= data.attackDistance)
+            {
+                currentRoutine = EnemyRoutine.Attaking;
+                return;
+            }
+
+            movePosition = attackTarget.position;
+
         }
 
-        agent.ResetPath();
-        movePosition = transform.position;
-        if(currentFireInterval >= fireInterval)
+        private void FireRoutine()
         {
-            OnFireStart?.Invoke();
-            currentFireInterval = 0f;
+            if (distanceToTarget > data.attackDistance)
+            {
+                currentRoutine = EnemyRoutine.Chasing;
+                return;
+            }
+
+            agent.ResetPath();
+            movePosition = transform.position;
+            if (currentFireInterval >= data.fireInterval)
+            {
+                OnFireStart?.Invoke();
+                currentFireInterval = 0f;
+            }
         }
-    }
 
     public void HitRoutine() 
     {
@@ -113,5 +110,6 @@ public class EnemyInput : MonoBehaviour, IGiveInput
 
     public Vector3 GetMoveTarget() => movePosition;
 
-    public Vector3 GetLookTarget() => attackTarget.position;
+        public Vector3 GetLookTarget() => attackTarget.position;
+    }
 }

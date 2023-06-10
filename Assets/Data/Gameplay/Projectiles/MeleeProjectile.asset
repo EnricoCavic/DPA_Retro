@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c31a67146a393f34cb056f2707546d2f, type: 3}
-  m_Name: BaseProjectile
+  m_Name: MeleeProjectile
   m_EditorClassIdentifier: 
-  projectileSpeed: 30
-  lifeTimeInSeconds: 3
+  speed: 0
+  lifeTimeInSeconds: 0.1
+  scale: {x: 3.5, y: 2, z: 1.5}
+  material: {fileID: 2100000, guid: 8e99711a566540e4f998e5147e12c7fd, type: 2}
+  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}

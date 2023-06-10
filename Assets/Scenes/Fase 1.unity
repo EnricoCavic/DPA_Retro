@@ -1476,8 +1476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917c302be2971d24b81fecb563603d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 3
-  fireInterval: 1
+  data: {fileID: 11400000, guid: 0cccde7abbcd834409ec8198cadc1502, type: 2}
   attackTarget: {fileID: 338698182}
 --- !u!114 &1198928079
 MonoBehaviour:
@@ -1552,7 +1551,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 5
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 160
