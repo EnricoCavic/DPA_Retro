@@ -1707,6 +1707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDistance: 15
+  fireInterval: 0.5
   attackTarget: {fileID: 338698182}
 --- !u!114 &1198928079
 MonoBehaviour:
@@ -1732,7 +1733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cccfa6f11ec7b40ab4b61f827af4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 338698181}
+  projectilePrefab: {fileID: 5499524644809545153, guid: fdc7dd41580164f4aa73d70b65597485, type: 3}
   projectileSource: {fileID: 1552105492}
   projectileData: {fileID: 0}
 --- !u!114 &1198928081
@@ -1949,6 +1950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDistance: 10
+  fireInterval: 0.5
   attackTarget: {fileID: 338698182}
 --- !u!114 &1332868403
 MonoBehaviour:
@@ -2117,6 +2119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDistance: 10
+  fireInterval: 0.5
   attackTarget: {fileID: 338698182}
 --- !u!114 &1605182554
 MonoBehaviour:

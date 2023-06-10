@@ -8,12 +8,16 @@ using System;
 
 public class EnemyInput : MonoBehaviour, IGiveInput
 {
+    enum EnemyRoutine { None, Chasing, Attaking }
+    private EnemyRoutine currentRoutine = EnemyRoutine.None;
+
     public float attackDistance = 10f;
+    public float fireInterval = 0.5f;
 
     public Transform attackTarget;
+    private Vector3 movePosition;
     private float distanceToTarget;
-    private bool stopFollowing;
-    private bool stopAttacking;
+    private float currentFireInterval;
 
     public Action OnFireStart { get; set; }
     public Action OnFireCanceled { get; set; }
@@ -26,35 +30,61 @@ public class EnemyInput : MonoBehaviour, IGiveInput
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
+        movePosition = new();
+        currentRoutine = EnemyRoutine.Chasing;
     }
 
     private void Update()
     {
         distanceToTarget = Vector3.Distance(attackTarget.position, transform.position);
+        switch(currentRoutine)
+        {
+            case EnemyRoutine.Chasing:
+                FollowRoutine();
+                break;     
+
+            case EnemyRoutine.Attaking:
+                FireRoutine();
+                break;
+
+            case EnemyRoutine.None:
+                return;
+        }
+
+    }
+
+    private void FollowRoutine()
+    {
         if (distanceToTarget <= attackDistance)
         {
-            stopFollowing = true;
+            currentFireInterval = 0f;
+            currentRoutine = EnemyRoutine.Attaking;
+            return;
         }
-        else
-        {
-            stopFollowing = false;
-        }
+
+        movePosition = attackTarget.position;
+
     }
 
-    public Vector3 GetMoveTarget(Vector3 _currentPosition)
+    private void FireRoutine()
     {
-        if (stopFollowing)
+        if (distanceToTarget > attackDistance)
         {
-            agent.ResetPath();
-            return _currentPosition;
+            currentRoutine = EnemyRoutine.Chasing;
+            return;
         }
 
-        return attackTarget.position;
+        agent.ResetPath();
+        movePosition = transform.position;
+        currentFireInterval += Time.deltaTime;
+        if(currentFireInterval >= fireInterval)
+        {
+            OnFireStart?.Invoke();
+            currentFireInterval = 0f;
+        }
     }
 
-    public Vector3 GetLookTarget()
-    {
-        return attackTarget.position;
-    }
+    public Vector3 GetMoveTarget() => movePosition;
+
+    public Vector3 GetLookTarget() => attackTarget.position;
 }

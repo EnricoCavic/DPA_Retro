@@ -11,7 +11,7 @@ namespace Retro.Character.Input
         Action OnMoveStart { get; set; }
         Action OnMoveCanceled { get; set; }
 
-        Vector3 GetMoveTarget(Vector3 _currentPosition);
+        Vector3 GetMoveTarget();
         Vector3 GetLookTarget();
     }
 }

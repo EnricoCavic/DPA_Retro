@@ -60,10 +60,10 @@ namespace Retro.Character.Input
 
         }
 
-        public Vector3 GetMoveTarget(Vector3 _currentPosition)
+        public Vector3 GetMoveTarget()
         {
             moveTarget = inputActions.Gameplay.Move.ReadValue<Vector2>();
-            return _currentPosition + new Vector3(moveTarget.x, 0f, moveTarget.y);
+            return transform.position + new Vector3(moveTarget.x, 0f, moveTarget.y);
         }
 
 

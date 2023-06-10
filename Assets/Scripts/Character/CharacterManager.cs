@@ -36,7 +36,7 @@ namespace Retro.Character
 
         private void Update()
         {
-            movement.MovePlayer(inputHandler.GetMoveTarget(transform.position));
+            movement.MovePlayer(inputHandler.GetMoveTarget());
             movement.PlayerLookAt(inputHandler.GetLookTarget());
         }
     }
