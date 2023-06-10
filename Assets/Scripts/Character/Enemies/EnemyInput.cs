@@ -9,8 +9,8 @@ namespace Retro.Character
 {
     public class EnemyInput : MonoBehaviour, IGiveInput, IGetHit
     {
-        enum EnemyRoutine { None, Chasing, Attaking, HitStun }
-        private EnemyRoutine currentRoutine = EnemyRoutine.None;
+        public enum EnemyRoutine { None, Chasing, Attaking, HitStun }
+        public EnemyRoutine currentRoutine = EnemyRoutine.None;
 
         public EnemyRoutineDataSO data;
 
