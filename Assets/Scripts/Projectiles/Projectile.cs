@@ -48,13 +48,15 @@ namespace Retro.Gameplay
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.layer != LayerMask.NameToLayer("Hitable")) return;
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Hitable"))
+            {
+                if (collision.gameObject.TryGetComponent(out IGetHit e))
+                    e.HandleHit();
 
-            if (collision.gameObject.TryGetComponent(out IGetHit e))
-                e.HandleHit();
+                if (collision.gameObject.TryGetComponent(out CharacterAttributes attributes))
+                    attributes.TakeDamage(1);
 
-            if (collision.gameObject.TryGetComponent(out CharacterAttributes attributes))
-                attributes.TakeDamage(1);
+            }
 
             if (released) return;
             released = true;

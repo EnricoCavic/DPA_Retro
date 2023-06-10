@@ -9,8 +9,8 @@ namespace Retro.Character.Input
     public class PlayerInput : MonoBehaviour, IGiveInput, IGetHit
     {
         // criar rotina de volta no tempo e suas condições, retorno e funcionalidades
-        enum PlayerRoutine { None, Moving, HitStun }
-        private PlayerRoutine currentRoutine = PlayerRoutine.None;
+        public enum PlayerRoutine { None, Moving, HitStun }
+        public PlayerRoutine currentRoutine = PlayerRoutine.None;
         
         private PlayerActions inputActions;
         private Camera mainCam;
@@ -29,6 +29,7 @@ namespace Retro.Character.Input
         {
             inputActions = InputManager.Instance.inputActions;
             mainCam = Camera.main;
+            currentRoutine = PlayerRoutine.Moving;
         }
 
         private void Update() => HandleRoutines();
