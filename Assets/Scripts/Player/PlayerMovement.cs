@@ -53,7 +53,16 @@ namespace Retro.Character
 
         void Shoot()
         {
-            var projectile = Instantiate(projectilePrefab, projectileSource.position, projectileSource.rotation);
+            var pool = ObjectPoolManager.Instance.AddNewPool(projectilePrefab);
+
+            var projectile = pool.available.Get();
+
+            projectile.transform.position = projectileSource.position;
+            projectile.transform.rotation = projectileSource.rotation;
+            projectile.gameObject.SetActive(true);
+            projectile.GetComponent<Projectile>().myPool = pool.available;
+
+            //var projectile = Instantiate(projectilePrefab, projectileSource.position, projectileSource.rotation);
             Debug.Log("tiro");
 
         }
