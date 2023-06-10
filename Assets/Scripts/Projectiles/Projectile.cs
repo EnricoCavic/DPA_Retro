@@ -13,7 +13,13 @@ namespace Retro.Gameplay
         Vector3 direction;
         float currentLifetime;
 
-        private void OnEnable() => currentLifetime = 0f;
+        bool released;
+
+        private void OnEnable()
+        {
+            released = false;
+            currentLifetime = 0f;
+        }
 
         private void Update()
         {
@@ -21,13 +27,16 @@ namespace Retro.Gameplay
             transform.position += direction * (Time.deltaTime * data.projectileSpeed);
 
             currentLifetime += Time.deltaTime;
-            if(currentLifetime >= data.lifeTimeInSeconds)
+            if (currentLifetime >= data.lifeTimeInSeconds && !released)
                 myPool.Release(gameObject);
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.TryGetComponent(out Projectile _)) return;
+            if (released) return;
+
+            released = true;
             myPool.Release(gameObject); 
         }
     }
