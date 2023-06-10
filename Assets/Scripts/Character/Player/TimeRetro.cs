@@ -19,9 +19,14 @@ public struct PlayerRetro
 public class TimeRetro : MonoBehaviour
 {
     public float intervalFraction;
+    public int queueLimit;
+
 
     private float time;
     private float lastTime;
+
+
+
 
     // Update() salvar steps de acordo com fração do delta time
     void Update()
