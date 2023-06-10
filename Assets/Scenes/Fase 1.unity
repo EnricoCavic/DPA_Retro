@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 338698187}
   - component: {fileID: 338698185}
   - component: {fileID: 338698186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 357115191}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LookAt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 383509930}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjectileSpawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 546040817}
   - component: {fileID: 546040819}
   - component: {fileID: 546040818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 619615432}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LookAt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 672129173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjectileSpawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,7 +1002,7 @@ GameObject:
   - component: {fileID: 713424343}
   - component: {fileID: 713424345}
   - component: {fileID: 713424344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1262,7 +1262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 912431557}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LookAt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1295,7 +1295,7 @@ GameObject:
   - component: {fileID: 953589873}
   - component: {fileID: 953589876}
   - component: {fileID: 953589875}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1514,7 +1514,7 @@ GameObject:
   - component: {fileID: 993803203}
   - component: {fileID: 993803205}
   - component: {fileID: 993803204}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1599,7 +1599,7 @@ GameObject:
   - component: {fileID: 1196789423}
   - component: {fileID: 1196789425}
   - component: {fileID: 1196789424}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1687,7 +1687,7 @@ GameObject:
   - component: {fileID: 1198928080}
   - component: {fileID: 1198928079}
   - component: {fileID: 1198928078}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1930,7 +1930,7 @@ GameObject:
   - component: {fileID: 1332868404}
   - component: {fileID: 1332868403}
   - component: {fileID: 1332868402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2062,7 +2062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1552105492}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjectileSpawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2099,7 +2099,7 @@ GameObject:
   - component: {fileID: 1605182555}
   - component: {fileID: 1605182554}
   - component: {fileID: 1605182553}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2233,7 +2233,7 @@ GameObject:
   - component: {fileID: 1754745035}
   - component: {fileID: 1754745037}
   - component: {fileID: 1754745036}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2527,7 +2527,7 @@ GameObject:
   - component: {fileID: 1851879140}
   - component: {fileID: 1851879142}
   - component: {fileID: 1851879141}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2610,7 +2610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1902968313}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjectileSpawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2641,7 +2641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1942596930}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LookAt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2813,7 +2813,7 @@ GameObject:
   - component: {fileID: 2114124240}
   - component: {fileID: 2114124242}
   - component: {fileID: 2114124241}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
