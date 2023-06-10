@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyManager : MonoBehaviour
+using Retro.Character.Input;
+using System;
+
+public class EnemyManager : MonoBehaviour, IGiveInput
 {
     public Transform attackTarget;
     public bool stopFollowing;
@@ -11,29 +14,18 @@ public class EnemyManager : MonoBehaviour
 
     private NavMeshAgent agent;
 
-    private void Awake()
+    public Action OnFireStart { get; set; }
+    public Action OnFireCanceled { get; set; }
+    public Action OnMoveStart { get; set; }
+    public Action OnMoveCanceled { get; set; }
+
+    public Vector3 GetMoveTarget(Vector3 _currentPosition)
     {
-        agent = GetComponent<NavMeshAgent>();
+        return attackTarget.position;
     }
 
-    void Update()
+    public Vector3 GetLookTarget()
     {
-        FollowTarget();               
+        return attackTarget.position;
     }
-
-    void FollowTarget() 
-    {
-        if (stopFollowing) return;
-        if (attackTarget == null) return;
-
-        agent.SetDestination(attackTarget.position);
-    }
-
-    void MeleeAttackTarget() 
-    {
-        if (stopAttacking) return;
-        if (attackTarget == null) return;
-    }
-
-
 }
