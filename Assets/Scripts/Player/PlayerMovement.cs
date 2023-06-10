@@ -11,9 +11,14 @@ namespace Retro.Character
     {
         IGiveInput playerInput;
 
-        Vector2 lookTarget;
         NavMeshAgent agent;
 
+        float distance;
+        Vector3 lookTarget;
+        Vector2 v2Temp;
+        Vector3 v3Temp;
+
+        public Transform cameraLookTarget;
         public GameObject projectilePrefab;
         public Transform projectileSource;
 
@@ -30,13 +35,18 @@ namespace Retro.Character
         {
             PlayerLookAt();
             MovePlayer();
+
+            //distance = Vector3.Distance(transform.position, lookTarget);
+            v3Temp = (lookTarget - transform.position) * 0.2f;
+            cameraLookTarget.position = transform.position + v3Temp;
         }
 
         void PlayerLookAt()
         {
-            lookTarget = playerInput.GetLookTarget();
+            v2Temp = playerInput.GetLookTarget();
+            lookTarget = new Vector3(v2Temp.x, 0, v2Temp.y);
 
-            transform.LookAt(new Vector3(lookTarget.x, 0, lookTarget.y));
+            transform.LookAt(lookTarget);
 
             var rotTarget = new Vector3(0, transform.eulerAngles.y, 0);
             transform.eulerAngles = rotTarget;
