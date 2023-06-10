@@ -5,7 +5,6 @@ using UnityEngine.Pool;
 
 public class Projectile : MonoBehaviour
 {
-    // teste
     public float projectileSpeed;
     Vector3 direction;
 
@@ -23,23 +22,20 @@ public class Projectile : MonoBehaviour
         StopAllCoroutines();
     }
 
-    void Update()
-    {
-        Shoot();
-    }
-
-    void Shoot() 
+    private void Update()
     {
         direction = transform.forward.normalized;
         transform.position += direction * (Time.deltaTime * projectileSpeed);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        myPool.Release(gameObject);
+    }
 
     public IEnumerator Countdown() 
     {
         yield return new WaitForSeconds(lifeTimeInSeconds);
-
         myPool.Release(gameObject);
-        //INSERIR RETORNO PARA A POOL AQUI
     }
 }

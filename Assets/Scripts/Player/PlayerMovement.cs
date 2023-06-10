@@ -13,7 +13,6 @@ namespace Retro.Character
 
         NavMeshAgent agent;
 
-        float distance;
         Vector3 lookTarget;
         Vector2 v2Temp;
         Vector3 v3Temp;
@@ -25,7 +24,7 @@ namespace Retro.Character
 
         private void Awake()
         {
-            playerInput = GetComponent<PlayerInput>();
+            playerInput = GetComponent<IGiveInput>();
             agent = GetComponent<NavMeshAgent>();
 
             playerInput.OnFireStart += Shoot;
@@ -36,7 +35,6 @@ namespace Retro.Character
             PlayerLookAt();
             MovePlayer();
 
-            //distance = Vector3.Distance(transform.position, lookTarget);
             v3Temp = (lookTarget - transform.position) * 0.2f;
             cameraLookTarget.position = transform.position + v3Temp;
         }
