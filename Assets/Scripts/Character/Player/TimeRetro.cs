@@ -8,4 +8,13 @@ public class TimeRetro : MonoBehaviour
     // transform
     // atributos do jogador - hp
     // animaçao - nome e timestamp atual
+
+
+    // Rewind()
+    // evento de inicio
+    // lógica de tempo global
+    // voltar nos steps 
+    // lógica de cada step
+    // evento fim do rewind
+
 }
