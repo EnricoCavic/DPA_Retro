@@ -11,10 +11,23 @@ namespace Retro.Gameplay
         public ProjectileDataSO data;
         public ObjectPool<GameObject> myPool;
 
+        private MeshRenderer meshRenderer;
+        private MeshFilter meshFilter;
+
         Vector3 direction;
         float currentLifetime;
 
         bool released;
+
+        public void SetData(ProjectileDataSO _data)
+        {
+            data = _data;
+            transform.localScale = data.scale;
+            if (meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
+            meshFilter = GetComponent<MeshFilter>();
+            meshRenderer.material = data.material;
+            meshFilter.mesh = data.mesh;
+        }
 
         private void OnEnable()
         {
@@ -25,7 +38,7 @@ namespace Retro.Gameplay
         private void Update()
         {
             direction = transform.forward.normalized;
-            transform.position += direction * (Time.deltaTime * data.projectileSpeed);
+            transform.position += direction * (Time.deltaTime * data.speed);
 
             currentLifetime += Time.deltaTime;
             if (currentLifetime >= data.lifeTimeInSeconds && !released)

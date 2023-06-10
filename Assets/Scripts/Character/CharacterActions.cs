@@ -33,7 +33,7 @@ namespace Retro.Character
 
             var projectile = obj.GetComponent<Projectile>();
             projectile.myPool = instance.pool;
-            projectile.data = projectileData;
+            projectile.SetData(projectileData);
         }
 
 
