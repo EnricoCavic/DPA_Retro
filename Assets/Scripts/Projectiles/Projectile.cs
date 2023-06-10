@@ -24,8 +24,10 @@ namespace Retro.Gameplay
         {
             data = _data;
             transform.localScale = data.scale;
-            if (meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
-            meshFilter = GetComponent<MeshFilter>();
+            if (meshRenderer == null) 
+                meshRenderer = GetComponent<MeshRenderer>();
+            if(meshFilter == null)
+                meshFilter = GetComponent<MeshFilter>();
             meshRenderer.material = data.material;
             meshFilter.mesh = data.mesh;
         }
