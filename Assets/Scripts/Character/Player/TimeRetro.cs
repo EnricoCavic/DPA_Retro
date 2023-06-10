@@ -9,6 +9,7 @@ public class TimeRetro : MonoBehaviour
     // atributos do jogador - hp
     // animaçao - nome e timestamp atual
 
+    // Update() salvar steps de acordo com fração do delta time
 
     // Rewind()
     // evento de inicio
