@@ -11,6 +11,7 @@ namespace Retro.Managers
     public class SceneManager : Singleton<SceneManager>
     {
         [SerializeField] private AssetReference firstScene;
+        [SerializeField] private bool testMode = false;
 
         private SceneInstance loadedScene;
 
@@ -19,6 +20,7 @@ namespace Retro.Managers
         private void Awake()
         {
             if (!InstanceSetup(this)) return;
+            if (testMode) return;
 
             var handle = Addressables.LoadSceneAsync(firstScene, LoadSceneMode.Additive);
             handle.Completed += (operation) =>

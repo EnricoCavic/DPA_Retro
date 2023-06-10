@@ -17,6 +17,7 @@ namespace Retro.Managers
         private int flip;
         private float trackVolume = 1f;
 
+        // estruturar os audio sources como pares para ter mais controle deles
         private List<AudioSource> soundtrackChannels;
 
         private void Awake()
@@ -26,7 +27,6 @@ namespace Retro.Managers
             if (soundtrack == null) return;
             clipTracks = new(soundtrack.GetClipHolders());
   
-
             soundtrackChannels = new();
             GameObject soundChannel;
             int totalSoundtrackChannels = clipTracks.Count * 2;

@@ -1,22 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Retro.Managers;
+using Retro.Character.Input;
+using UnityEngine.AI;
 
-public class PlayerMovement : MonoBehaviour
+namespace Retro.Character
 {
-
-    public Transform lookTarget;
-
-
-    void Update()
+    public class PlayerMovement : MonoBehaviour
     {
-        var posTarget = new Vector3(lookTarget.position.x, 0, lookTarget.position.z);
+        IGiveInput playerInput;
 
-        //this.transform.LookAt(posTarget, this.transform.up);
-        this.transform.LookAt(posTarget);
+        Vector2 lookTarget;
+        NavMeshAgent agent;
 
-        var rotTarget = new Vector3(0, this.transform.eulerAngles.y, 0);
-        //this.transform.Rotate(rotTarget);
-        this.transform.eulerAngles = rotTarget;
+        public GameObject projectilePrefab;
+        public Transform projectileSource;
+
+
+        private void Awake()
+        {
+            playerInput = GetComponent<PlayerInput>();
+            agent = GetComponent<NavMeshAgent>();
+
+            playerInput.OnFireStart += Shoot;
+        }
+
+        void Update()
+        {
+            PlayerLookAt();
+            MovePlayer();
+        }
+
+        void PlayerLookAt()
+        {
+            lookTarget = playerInput.GetLookTarget();
+
+            transform.LookAt(new Vector3(lookTarget.x, 0, lookTarget.y));
+
+            var rotTarget = new Vector3(0, transform.eulerAngles.y, 0);
+            transform.eulerAngles = rotTarget;
+        }
+
+
+        void MovePlayer()
+        {
+            var target = playerInput.GetMoveTarget(transform.position);
+
+            //Debug.Log($"X: {target.x} | Y: {target.y} | Z: {target.z} ");
+            agent.SetDestination(target);
+        }
+
+        void Shoot()
+        {
+            var projectile = Instantiate(projectilePrefab, projectileSource.position, projectileSource.rotation);
+            Debug.Log("tiro");
+
+        }
+
+
     }
 }
