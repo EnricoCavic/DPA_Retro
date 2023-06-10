@@ -14,12 +14,16 @@ namespace Retro.Character
         Vector2 lookTarget;
         NavMeshAgent agent;
 
+        public GameObject projectilePrefab;
+        public Transform projectileSource;
 
 
         private void Awake()
         {
             playerInput = GetComponent<PlayerInput>();
             agent = GetComponent<NavMeshAgent>();
+
+            playerInput.OnFireStart += Shoot;
         }
 
         void Update()
@@ -43,10 +47,16 @@ namespace Retro.Character
         {
             var target = playerInput.GetMoveTarget(transform.position);
 
-            Debug.Log($"X: {target.x} | Y: {target.y} | Z: {target.z} ");
+            //Debug.Log($"X: {target.x} | Y: {target.y} | Z: {target.z} ");
             agent.SetDestination(target);
         }
 
+        void Shoot()
+        {
+            var projectile = Instantiate(projectilePrefab, projectileSource.position, projectileSource.rotation);
+            Debug.Log("tiro");
+
+        }
 
 
     }
