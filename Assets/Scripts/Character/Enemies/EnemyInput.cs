@@ -114,4 +114,4 @@ namespace Retro.Character
 
         public Vector3 GetLookTarget() => attackTarget.position;
     }
-}}
+}

@@ -6,6 +6,9 @@ namespace Retro.Character
 {
     public class CharacterMovement : MonoBehaviour
     {
+
+        public float speed;
+
         private NavMeshAgent agent;
 
         private void Awake()

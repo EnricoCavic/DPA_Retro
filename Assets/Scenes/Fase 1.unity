@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81c62ca91e5d504ca1730c54d8630eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!114 &338698187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,9 +1454,9 @@ GameObject:
   - component: {fileID: 1198928084}
   - component: {fileID: 1198928083}
   - component: {fileID: 1198928081}
+  - component: {fileID: 1198928078}
   - component: {fileID: 1198928080}
   - component: {fileID: 1198928079}
-  - component: {fileID: 1198928078}
   - component: {fileID: 1198928086}
   m_Layer: 6
   m_Name: Enemy
@@ -1490,6 +1491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81c62ca91e5d504ca1730c54d8630eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!114 &1198928080
 MonoBehaviour:
   m_ObjectHideFlags: 0
