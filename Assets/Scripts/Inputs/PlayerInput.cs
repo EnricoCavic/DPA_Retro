@@ -2,11 +2,15 @@ using UnityEngine;
 using Retro.Managers;
 using System;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 namespace Retro.Character.Input
 {
-    public class PlayerInput : MonoBehaviour, IGiveInput
+    public class PlayerInput : MonoBehaviour, IGiveInput, IGetHit
     {
+        enum PlayerRoutine { None, Moving, HitStun }
+        private PlayerRoutine currentRoutine = PlayerRoutine.None;
+        
         private PlayerActions inputActions;
         private Camera mainCam;
 
@@ -24,6 +28,21 @@ namespace Retro.Character.Input
         {
             inputActions = InputManager.Instance.inputActions;
             mainCam = Camera.main;
+        }
+
+        private void Update() => HandleRoutines();
+        private void HandleRoutines()
+        {
+            switch (currentRoutine)
+            {
+                case PlayerRoutine.Moving:
+                    moveTarget = inputActions.Gameplay.Move.ReadValue<Vector2>();
+                    break;
+
+                case PlayerRoutine.HitStun:
+                    moveTarget = Vector3.zero;
+                    break;
+            }
         }
 
         private void OnEnable()
@@ -62,10 +81,32 @@ namespace Retro.Character.Input
 
         public Vector3 GetMoveTarget()
         {
-            moveTarget = inputActions.Gameplay.Move.ReadValue<Vector2>();
             return transform.position + new Vector3(moveTarget.x, 0f, moveTarget.y);
         }
 
+        public void HandleHit()
+        {
+            currentRoutine = PlayerRoutine.HitStun;
 
+            Sequence mySequence = DOTween.Sequence();
+            mySequence.Insert(0, transform
+                .DOPunchPosition
+                (
+                punch: transform.forward,
+                duration: 0.2f,
+                vibrato: 1,
+                elasticity: 1
+                ))
+                .Insert(0,
+                    transform
+                        .DOShakePosition
+                        (
+                            duration: 0.2f,
+                            strength: 1f,
+                            vibrato: 1,
+                            randomness: 5f
+                        )
+                ).OnComplete(() => currentRoutine = PlayerRoutine.Moving);
+        }
     }
 }

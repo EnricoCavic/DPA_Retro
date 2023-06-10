@@ -7,7 +7,7 @@ using DG.Tweening;
 
 namespace Retro.Character
 {
-    public class EnemyInput : MonoBehaviour, IGiveInput
+    public class EnemyInput : MonoBehaviour, IGiveInput, IGetHit
     {
         enum EnemyRoutine { None, Chasing, Attaking, HitStun }
         private EnemyRoutine currentRoutine = EnemyRoutine.None;
@@ -35,7 +35,9 @@ namespace Retro.Character
             currentRoutine = EnemyRoutine.Chasing;
         }
 
-        private void Update()
+        private void Update() => HandleRoutines();
+
+        private void HandleRoutines()
         {
             distanceToTarget = Vector3.Distance(attackTarget.position, transform.position);
             currentFireInterval += Time.deltaTime;
@@ -49,11 +51,7 @@ namespace Retro.Character
                 case EnemyRoutine.Attaking:
                     FireRoutine();
                     break;
-                case EnemyRoutine.None:
-                    return;
-
             }
-
         }
 
         private void FollowRoutine()
@@ -85,7 +83,7 @@ namespace Retro.Character
             }
         }
 
-        public void HitRoutine()
+        public void HandleHit()
         {
             currentRoutine = EnemyRoutine.HitStun;
 

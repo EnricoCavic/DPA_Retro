@@ -48,20 +48,17 @@ namespace Retro.Gameplay
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Hitable")) 
-            {
-                if(collision.gameObject.TryGetComponent(out EnemyInput e))
-                    e.HitRoutine();
-            }
+            if (collision.gameObject.layer != LayerMask.NameToLayer("Hitable")) return;
 
-            if (collision.gameObject.TryGetComponent(out Projectile _)) return;
+            if (collision.gameObject.TryGetComponent(out IGetHit e))
+                e.HandleHit();
 
             if (collision.gameObject.TryGetComponent(out CharacterAttributes attributes))
                 attributes.TakeDamage(1);
-            
+
             if (released) return;
             released = true;
-            myPool.Release(gameObject); 
+            myPool.Release(gameObject);
         }
     }
 }

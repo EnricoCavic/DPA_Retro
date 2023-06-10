@@ -27,6 +27,7 @@ namespace Retro.Character
         public void MovePlayer(Vector3 _moveTarget)
         {
             if (_moveTarget == transform.position) return;
+
             agent.SetDestination(_moveTarget);
         }
     }
