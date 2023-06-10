@@ -36,26 +36,8 @@ namespace Retro.Gameplay
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Hitable")) 
             {
-                
-                collision.transform
-                    .DOPunchPosition
-                    (
-                        punch: transform.forward,
-                        duration: 0.2f,
-                        vibrato: 1,
-                        elasticity: 1
-                    );
-                
-                collision.transform
-                    .DOShakePosition
-                    (
-                        duration: 0.2f,
-                        strength: 1f,
-                        vibrato: 1,
-                        randomness: 5f
-
-                    );
-
+                if(collision.gameObject.TryGetComponent(out EnemyInput e))
+                    e.HitRoutine();
             }
 
             if (collision.gameObject.TryGetComponent(out Projectile _)) return;

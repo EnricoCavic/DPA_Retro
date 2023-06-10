@@ -6,9 +6,11 @@ using UnityEngine.AI;
 using Retro.Character.Input;
 using System;
 
+using DG.Tweening;
+
 public class EnemyInput : MonoBehaviour, IGiveInput
 {
-    enum EnemyRoutine { None, Chasing, Attaking }
+    enum EnemyRoutine { None, Chasing, Attaking, HitStun }
     private EnemyRoutine currentRoutine = EnemyRoutine.None;
 
     public float attackDistance = 10f;
@@ -48,9 +50,9 @@ public class EnemyInput : MonoBehaviour, IGiveInput
             case EnemyRoutine.Attaking:
                 FireRoutine();
                 break;
-
             case EnemyRoutine.None:
                 return;
+            
         }
 
     }
@@ -82,6 +84,31 @@ public class EnemyInput : MonoBehaviour, IGiveInput
             OnFireStart?.Invoke();
             currentFireInterval = 0f;
         }
+    }
+
+    public void HitRoutine() 
+    {
+        currentRoutine = EnemyRoutine.HitStun;
+
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.Insert(0, transform
+            .DOPunchPosition
+            (
+            punch: transform.forward,
+            duration: 0.2f,
+            vibrato: 1,
+            elasticity: 1
+            ))
+            .Insert(0,
+                transform
+                    .DOShakePosition
+                    (
+                        duration: 0.2f,
+                        strength: 1f,
+                        vibrato: 1,
+                        randomness: 5f
+                    )
+            ).OnComplete(() => currentRoutine = EnemyRoutine.Chasing);
     }
 
     public Vector3 GetMoveTarget() => movePosition;
