@@ -59,8 +59,11 @@ namespace Retro.Gameplay
             }
 
             if (collision.gameObject.TryGetComponent(out Projectile _)) return;
-            if (released) return;
 
+            if (collision.gameObject.TryGetComponent(out CharacterAttributes attributes))
+                attributes.TakeDamage(1);
+            
+            if (released) return;
             released = true;
             myPool.Release(gameObject); 
         }

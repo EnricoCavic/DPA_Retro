@@ -37,7 +37,9 @@ public class EnemyInput : MonoBehaviour, IGiveInput
     private void Update()
     {
         distanceToTarget = Vector3.Distance(attackTarget.position, transform.position);
-        switch(currentRoutine)
+        currentFireInterval += Time.deltaTime;
+
+        switch (currentRoutine)
         {
             case EnemyRoutine.Chasing:
                 FollowRoutine();
@@ -57,7 +59,6 @@ public class EnemyInput : MonoBehaviour, IGiveInput
     {
         if (distanceToTarget <= attackDistance)
         {
-            currentFireInterval = 0f;
             currentRoutine = EnemyRoutine.Attaking;
             return;
         }
@@ -76,7 +77,6 @@ public class EnemyInput : MonoBehaviour, IGiveInput
 
         agent.ResetPath();
         movePosition = transform.position;
-        currentFireInterval += Time.deltaTime;
         if(currentFireInterval >= fireInterval)
         {
             OnFireStart?.Invoke();
