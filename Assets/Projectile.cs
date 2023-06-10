@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Projectile : MonoBehaviour
 {
@@ -9,11 +10,12 @@ public class Projectile : MonoBehaviour
 
     public float lifeTimeInSeconds;
 
+    public ObjectPool<GameObject> myPool;
 
     private void OnEnable()
     {
         StartCoroutine(Countdown());
-        direction = transform.forward.normalized;
+        
     }
     private void OnDisable()
     {
@@ -27,6 +29,7 @@ public class Projectile : MonoBehaviour
 
     void Shoot() 
     {
+        direction = transform.forward.normalized;
         transform.position += direction * (Time.deltaTime * projectileSpeed);
     }
 
@@ -35,8 +38,7 @@ public class Projectile : MonoBehaviour
     {
         yield return new WaitForSeconds(lifeTimeInSeconds);
 
-        gameObject.SetActive(false);
+        myPool.Release(gameObject);
         //INSERIR RETORNO PARA A POOL AQUI
     }
-
 }
