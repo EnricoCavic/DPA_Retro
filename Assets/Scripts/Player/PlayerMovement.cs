@@ -46,8 +46,6 @@ namespace Retro.Character
         void MovePlayer()
         {
             var target = playerInput.GetMoveTarget(transform.position);
-
-            //Debug.Log($"X: {target.x} | Y: {target.y} | Z: {target.z} ");
             agent.SetDestination(target);
         }
 
@@ -61,10 +59,6 @@ namespace Retro.Character
             projectile.transform.rotation = projectileSource.rotation;
             projectile.gameObject.SetActive(true);
             projectile.GetComponent<Projectile>().myPool = pool.available;
-
-            //var projectile = Instantiate(projectilePrefab, projectileSource.position, projectileSource.rotation);
-            Debug.Log("tiro");
-
         }
 
 
