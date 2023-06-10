@@ -36,6 +36,7 @@ public class Projectile : MonoBehaviour
         yield return new WaitForSeconds(lifeTimeInSeconds);
 
         gameObject.SetActive(false);
+        //INSERIR RETORNO PARA A POOL AQUI
     }
 
 }
