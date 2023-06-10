@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Retro.Managers;
 using System;
@@ -19,6 +17,8 @@ namespace Retro.Character.Input
         public Action OnFireStart { get; set; }
         public Action OnFireCanceled { get; set; }
 
+        public Action OnMoveStart { get; set; }
+        public Action OnMoveCanceled { get; set; }
 
         private void Awake()
         {
@@ -30,24 +30,33 @@ namespace Retro.Character.Input
         {
             inputActions.Gameplay.Fire.performed += FirePerformed;
             inputActions.Gameplay.Fire.canceled += FireCanceled;
+
+            inputActions.Gameplay.Move.performed += MovePerformed;
+            inputActions.Gameplay.Move.canceled += MoveCanceled;
         }
 
         private void OnDisable()
         {
             inputActions.Gameplay.Fire.performed -= FirePerformed;
             inputActions.Gameplay.Fire.canceled -= FireCanceled;
+
+            inputActions.Gameplay.Move.performed -= MovePerformed;
+            inputActions.Gameplay.Move.canceled -= MoveCanceled;
         }
 
         private void FirePerformed(InputAction.CallbackContext obj) => OnFireStart?.Invoke();
-        private void FireCanceled(InputAction.CallbackContext obj) => OnFireCanceled?.Invoke();
+        private void FireCanceled(InputAction.CallbackContext obj) => OnFireCanceled?.Invoke();  
+        
+        private void MovePerformed(InputAction.CallbackContext obj) => OnMoveStart?.Invoke();
+        private void MoveCanceled(InputAction.CallbackContext obj) => OnMoveCanceled?.Invoke();
 
-        public Vector2 GetLookTarget()
+        public Vector3 GetLookTarget()
         {
             mousePosition = inputActions.Gameplay.MousePosition.ReadValue<Vector2>();
             screenToRay = mainCam.ScreenPointToRay(mousePosition);
 
             if (!Physics.Raycast(screenToRay, out RaycastHit hit)) return Vector2.zero;
-            return new Vector2(hit.point.x, hit.point.z);
+            return hit.point;
 
         }
 

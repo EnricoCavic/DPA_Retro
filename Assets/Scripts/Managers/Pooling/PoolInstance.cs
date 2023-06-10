@@ -4,17 +4,17 @@ using UnityEngine.Pool;
 
 namespace Retro.Managers.Pooling
 {
-    public class Pool : MonoBehaviour
+    public class PoolInstance : MonoBehaviour
     {
         public GameObject prefab;
         public int defaultCapacity = 10;
         public int maxSize = 1000;
 
-        public ObjectPool<GameObject> available;
+        public ObjectPool<GameObject> pool;
 
         private void Awake()
         {
-            available = new(Create, OnDequeue, OnRelease, DestroyObject, true, defaultCapacity, maxSize);
+            pool = new(Create, OnDequeue, OnRelease, DestroyObject, true, defaultCapacity, maxSize);
         }
 
         private GameObject Create()

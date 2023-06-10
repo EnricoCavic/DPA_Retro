@@ -7,7 +7,7 @@ namespace Retro.Managers
 {
     public class ObjectPoolManager : Singleton<ObjectPoolManager>
     {
-        public Dictionary<GameObject, Pool> pools { get; private set; }
+        public Dictionary<GameObject, PoolInstance> pools { get; private set; }
 
         private void Awake()
         {
@@ -15,13 +15,13 @@ namespace Retro.Managers
             pools = new();
         }
 
-        public Pool AddNewPool(GameObject _prefabToPool, int _defaultCapacity = 30, int _maxSize = 1000)
+        public PoolInstance GetPoolInstance(GameObject _prefabToPool, int _defaultCapacity = 30, int _maxSize = 1000)
         {
             if (pools.ContainsKey(_prefabToPool)) return pools[_prefabToPool];
 
             var obj = new GameObject($"{_prefabToPool.name} Pool");
             obj.transform.parent = transform;
-            var pool = obj.AddComponent<Pool>();
+            var pool = obj.AddComponent<PoolInstance>();
             pool.prefab = _prefabToPool;
             pool.defaultCapacity = _defaultCapacity;
             pool.maxSize = _maxSize;

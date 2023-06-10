@@ -6,9 +6,12 @@ namespace Retro.Character.Input
     public interface IGiveInput
     {
         Action OnFireStart { get; set; }
-        Action OnFireCanceled { get; set; }
+        Action OnFireCanceled { get; set; }   
+        
+        Action OnMoveStart { get; set; }
+        Action OnMoveCanceled { get; set; }
 
         Vector3 GetMoveTarget(Vector3 _currentPosition);
-        Vector2 GetLookTarget();
+        Vector3 GetLookTarget();
     }
 }
