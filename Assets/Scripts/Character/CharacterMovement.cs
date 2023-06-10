@@ -8,6 +8,7 @@ namespace Retro.Character
     {
 
         public float speed;
+        public float acceleration;
 
         private NavMeshAgent agent;
 
@@ -28,6 +29,8 @@ namespace Retro.Character
         {
             if (_moveTarget == transform.position) return;
 
+            agent.speed = speed;
+            agent.acceleration = acceleration;
             agent.SetDestination(_moveTarget);
         }
     }

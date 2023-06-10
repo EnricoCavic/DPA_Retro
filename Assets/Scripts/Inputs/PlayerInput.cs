@@ -8,6 +8,7 @@ namespace Retro.Character.Input
 {
     public class PlayerInput : MonoBehaviour, IGiveInput, IGetHit
     {
+        // criar rotina de volta no tempo e suas condições, retorno e funcionalidades
         enum PlayerRoutine { None, Moving, HitStun }
         private PlayerRoutine currentRoutine = PlayerRoutine.None;
         
