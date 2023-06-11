@@ -45,17 +45,22 @@ namespace Retro.Gameplay
 
             currentLifetime += Time.deltaTime;
             if (currentLifetime >= data.lifeTimeInSeconds && !released)
-                myPool.Release(gameObject);
+                ReleaseObject();
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Hitable"))
+            if (other.gameObject.layer != LayerMask.NameToLayer("Hitable")) return;
+            if (other.gameObject.TryGetComponent(out IGetHit e))
             {
-                if (collision.gameObject.TryGetComponent(out IGetHit e))
-                    e.HandleHit(1, transform.forward);
+                bool hit = e.HandleHit(1, transform.forward);
+                if (!hit) return;
             }
+            ReleaseObject();
+        }
 
+        private void ReleaseObject()
+        {
             if (released) return;
             released = true;
             myPool.Release(gameObject);

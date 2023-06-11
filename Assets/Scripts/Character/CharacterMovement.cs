@@ -9,6 +9,9 @@ namespace Retro.Character
         [HideInInspector] public CharacterAttributesSO attributeData;
         private NavMeshAgent agent;
 
+        Vector3 lookDirection;
+        Quaternion lookRotation;
+
         private void Awake()
         {
             agent = GetComponentInChildren<NavMeshAgent>();
@@ -16,10 +19,14 @@ namespace Retro.Character
 
         public void PlayerLookAt(Vector3 _lookTarget)
         {
-            transform.LookAt(_lookTarget);
+            //transform.LookAt(_lookTarget);
 
-            var rotTarget = new Vector3(0, transform.eulerAngles.y, 0);
-            transform.eulerAngles = rotTarget;
+            //var rotTarget = new Vector3(0, transform.eulerAngles.y, 0);
+            //transform.eulerAngles = rotTarget;
+
+            lookDirection = (_lookTarget - transform.position).normalized;
+            lookRotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * attributeData.rotationSpeed);
         }
 
         public void MovePlayer(Vector3 _moveTarget)

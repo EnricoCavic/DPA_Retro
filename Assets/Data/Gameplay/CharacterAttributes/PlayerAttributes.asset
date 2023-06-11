@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlayerAttributes
   m_EditorClassIdentifier: 
   maxHealth: 50
+  rotationSpeed: 15
   speed: 8
-  acceleration: 20
+  acceleration: 50

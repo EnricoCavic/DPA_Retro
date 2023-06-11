@@ -14,6 +14,7 @@ namespace Retro.Character.Input
         private Vector2 mousePosition;
         private Ray screenToRay;
         private Vector3 moveTarget;
+        private Vector3 lookTarget;
 
         public Action OnFireStart { get; set; }
         public Action OnFireCanceled { get; set; }
@@ -65,7 +66,9 @@ namespace Retro.Character.Input
             screenToRay = mainCam.ScreenPointToRay(mousePosition);
 
             if (!Physics.Raycast(screenToRay, out RaycastHit hit)) return Vector2.zero;
-            return hit.point;
+            lookTarget = hit.point;
+            lookTarget.y = 0f;
+            return lookTarget;
 
         }
 

@@ -8,6 +8,7 @@ namespace Retro.Character
     public class CharacterAttributesSO : ScriptableObject
     {
         public int maxHealth;
+        public float rotationSpeed;
         public int speed;
         public int acceleration;
     }

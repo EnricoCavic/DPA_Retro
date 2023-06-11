@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Enemy1Attributes
   m_EditorClassIdentifier: 
   maxHealth: 5
+  rotationSpeed: 3
   speed: 4
   acceleration: 10

@@ -60,14 +60,15 @@ namespace Retro.Character
         {
             if (currentRoutine != PlayerRoutine.Moving) return;
 
+            capsuleCollider.enabled = false;
             movement.Stop();
             timeRetro.Rewind();
         }
 
-        public void HandleHit(int _dmg, Vector3 _direction)
+        public bool HandleHit(int _dmg, Vector3 _direction)
         {
             if (currentRoutine == PlayerRoutine.TimeRetro)
-                return;
+                return false;
 
             currentRoutine = PlayerRoutine.HitStun;
             health.TakeDamage(_dmg);
@@ -91,6 +92,7 @@ namespace Retro.Character
                             randomness: 5f
                         )
                 ).OnComplete(() => currentRoutine = PlayerRoutine.Moving);
+            return true;
         }
     }
 }

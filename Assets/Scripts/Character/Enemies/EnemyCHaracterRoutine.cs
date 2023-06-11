@@ -5,13 +5,14 @@ using UnityEngine;
 
 namespace Retro.Character
 {
+    public enum EnemyRoutine { None, Chasing, Attaking, HitStun, GlobalRewind }
+
     public class EnemyCHaracterRoutine : CharacterManager, IGetHit
     {
         public Transform attackTarget;
 
         public EnemyRoutineDataSO routineData;
 
-        public enum EnemyRoutine { None, Chasing, Attaking, HitStun }
         public EnemyRoutine currentRoutine = EnemyRoutine.None;
 
         private float distanceToTarget;
@@ -31,7 +32,6 @@ namespace Retro.Character
 
         private void Update()
         {
-            movement.PlayerLookAt(inputHandler.GetLookTarget());
             distanceToTarget = Vector3.Distance(attackTarget.position, transform.position);
             currentFireInterval += Time.deltaTime;
 
@@ -56,6 +56,7 @@ namespace Retro.Character
                 return;
             }
 
+            movement.PlayerLookAt(inputHandler.GetLookTarget());
             movement.MovePlayer(inputHandler.GetMoveTarget());
         }
 
@@ -67,6 +68,7 @@ namespace Retro.Character
                 return;
             }
 
+            movement.PlayerLookAt(inputHandler.GetLookTarget());
             movement.Stop();
             if (currentFireInterval >= routineData.fireInterval)
             {
@@ -75,7 +77,7 @@ namespace Retro.Character
             }
         }
 
-        public void HandleHit(int _dmg, Vector3 _direction)
+        public bool HandleHit(int _dmg, Vector3 _direction)
         {
             currentRoutine = EnemyRoutine.HitStun;
             health.TakeDamage(_dmg);
@@ -99,6 +101,8 @@ namespace Retro.Character
                             randomness: 5f
                         )
                 ).OnComplete(() => currentRoutine = EnemyRoutine.Chasing);
+
+            return true;
         }
     }
 }

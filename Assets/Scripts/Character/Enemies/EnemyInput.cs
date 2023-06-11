@@ -11,6 +11,8 @@ namespace Retro.Character
     {
         [HideInInspector] public Transform attackTarget;
 
+        Vector3 lookTarget;
+
         public Action OnFireStart { get; set; }
         public Action OnFireCanceled { get; set; }
 
@@ -18,6 +20,11 @@ namespace Retro.Character
         public Action OnMoveCanceled { get; set; }
 
         public Vector3 GetMoveTarget() => attackTarget.position;
-        public Vector3 GetLookTarget() => attackTarget.position;
+        public Vector3 GetLookTarget()
+        {
+            lookTarget = attackTarget.position;
+            lookTarget.y = 0f;
+            return lookTarget;
+        }
     }
 }

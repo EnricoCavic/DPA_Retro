@@ -10,6 +10,9 @@ public class SpawnerConfigsSO : ScriptableObject, ISpawner
     [field: SerializeField] public float interval { get; set; }
     [field: SerializeField] public float radialRandomness { get; set; }
     [field: SerializeField] public CharacterAttributesSO characterAttributes { get; set; }
+
+    public GameObject prefab { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    List<CharacterAttributesSO> ISpawner.characterAttributes { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 }
 
 
