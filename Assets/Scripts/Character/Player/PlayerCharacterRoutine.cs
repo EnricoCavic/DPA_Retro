@@ -14,6 +14,7 @@ namespace Retro.Character
 
         private TimeRetro timeRetro;
         private PlayerInput playerInput;
+        private Sequence mySequence;
 
         public override void Initialize()
         {
@@ -75,9 +76,11 @@ namespace Retro.Character
                 return false;
 
             currentRoutine = PlayerRoutine.HitStun;
-            health.TakeDamage(_dmg);
+            mySequence.Kill();
+            bool died = health.TakeDamage(_dmg);
+            if (died) return true;
 
-            Sequence mySequence = DOTween.Sequence();
+            mySequence = DOTween.Sequence();
             mySequence.Insert(0, transform
                 .DOPunchPosition
                 (

@@ -17,6 +17,7 @@ namespace Retro.Character
 
         private float distanceToTarget;
         private float currentFireInterval;
+        private Sequence mySequence;
 
         private void Start()
         {
@@ -83,9 +84,12 @@ namespace Retro.Character
         public bool HandleHit(int _dmg, Vector3 _direction)
         {
             currentRoutine = EnemyRoutine.HitStun;
-            health.TakeDamage(_dmg);
 
-            Sequence mySequence = DOTween.Sequence();
+            mySequence.Kill();
+            bool died = health.TakeDamage(_dmg);
+            if (died) return true;
+
+            mySequence = DOTween.Sequence();
             mySequence.Insert(0, transform
                 .DOPunchPosition
                 (

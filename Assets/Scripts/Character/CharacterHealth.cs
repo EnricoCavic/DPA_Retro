@@ -14,11 +14,16 @@ namespace Retro.Character
             currentHp = attributeData.maxHealth;
         }
 
-        public void TakeDamage(int _dmg)
+        public bool TakeDamage(int _dmg)
         {
             currentHp -= _dmg;
             if (currentHp <= 0)
+            {
                 Destroy(gameObject);
+                return true;
+            }
+
+            return false;
         }
     }
 }
