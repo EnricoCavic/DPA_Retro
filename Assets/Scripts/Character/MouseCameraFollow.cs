@@ -11,7 +11,7 @@ namespace Retro.Character
         private PlayerInput playerInput;
         Vector3 scaledDirection;
 
-        private void Awake() => playerInput = GetComponent<PlayerInput>();
+        private void Start() => playerInput = GetComponent<PlayerInput>();
 
         private void Update()
         {

@@ -8,7 +8,7 @@ namespace Retro.Character
 {
     public class CharacterManager : MonoBehaviour
     {
-        public IGiveInput inputHandler { get; private set; }
+        public IGiveInput inputHandler;
         [HideInInspector] public CharacterMovement movement;
         [HideInInspector] public CharacterActions actions;
         [HideInInspector] public CharacterHealth health;

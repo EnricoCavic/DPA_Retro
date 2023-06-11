@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 4486274331318905383}
     - target: {fileID: 9107165027447931007, guid: 71cfedbf17bd6c0449ff808e0a0e3b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9107165027447931007, guid: 71cfedbf17bd6c0449ff808e0a0e3b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -308,6 +308,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2401749345063841926, guid: 71cfedbf17bd6c0449ff808e0a0e3b7e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1679255426041155575}
+    - targetCorrespondingSourceObject: {fileID: 2401749345063841926, guid: 71cfedbf17bd6c0449ff808e0a0e3b7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7452795915660083438}
   m_SourcePrefab: {fileID: 100100000, guid: 71cfedbf17bd6c0449ff808e0a0e3b7e, type: 3}
 --- !u!4 &3112839393268561889 stripped
 Transform:
@@ -367,3 +370,17 @@ MonoBehaviour:
   rewindInterval: 0.05
   intervalFraction: 0.2
   queueLimit: 10
+--- !u!114 &7452795915660083438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359977186932213528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3348091516461954e9f7468ffdca0a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraLookTarget: {fileID: 4573555170617757546}
+  distanceMultiplier: 0.2

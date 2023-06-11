@@ -8,6 +8,8 @@ namespace Retro.Managers
 {
     public class GameplayManager : Singleton<GameplayManager>
     {
+        public GameObject playerPrefab;
+
         public List<EnemyCHaracterRoutine> spawnedEnemies;
 
         public float rewindTimeScale = 0.3f;
@@ -15,6 +17,12 @@ namespace Retro.Managers
         private void Awake()
         {
             if (!InstanceSetup(this)) return;
+            var player = Instantiate(playerPrefab).transform;
+
+            for (int i = 0; i < spawnedEnemies.Count; i++)
+            {
+                spawnedEnemies[i].attackTarget = player;
+            }
         }
 
         public void StartRewind()
