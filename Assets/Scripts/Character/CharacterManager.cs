@@ -9,35 +9,24 @@ namespace Retro.Character
     public class CharacterManager : MonoBehaviour
     {
         public IGiveInput inputHandler { get; private set; }
-
-        private CharacterMovement movement;
-        private CharacterActions actions;
+        [HideInInspector] public CharacterMovement movement;
+        [HideInInspector] public CharacterActions actions;
+        [HideInInspector] public CharacterAttributes attributes;
 
         [SerializeField] private ProjectileDataSO projectileData;
 
-        private void Awake()
+
+        [HideInInspector] public bool init = false;
+        public void Initialize()
         {
+            init = true;
             inputHandler = GetComponent<IGiveInput>();
             movement = GetComponent<CharacterMovement>();
-
             actions = GetComponent<CharacterActions>();
+            attributes = GetComponent<CharacterAttributes>();
+
             actions.projectileData = projectileData;
         }
 
-        private void OnEnable()
-        {
-            inputHandler.OnFireStart += actions.Fire;
-        }
-
-        private void OnDisable()
-        {
-            inputHandler.OnFireStart -= actions.Fire;
-        }
-
-        private void Update()
-        {
-            movement.MovePlayer(inputHandler.GetMoveTarget());
-            movement.PlayerLookAt(inputHandler.GetLookTarget());
-        }
     }
 }

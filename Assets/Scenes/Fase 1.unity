@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 338698188}
   - component: {fileID: 338698183}
   - component: {fileID: 338698184}
-  - component: {fileID: 338698187}
+  - component: {fileID: 338698192}
   - component: {fileID: 338698190}
   - component: {fileID: 338698186}
   - component: {fileID: 338698185}
@@ -320,7 +320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ae708f6bed65d4c8cc503fd706f7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoutine: 0
 --- !u!114 &338698185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,19 +349,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   acceleration: 12
---- !u!114 &338698187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338698181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a26ef834e5cc94a9f01614bb2d726b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: 5513a0d1cdb7dbd4eb978098513bbbe7, type: 2}
 --- !u!136 &338698188
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -435,7 +421,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intervalFraction: 0.2
   queueLimit: 20
-  queueSize: 0
+--- !u!114 &338698192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338698181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6826970adb430ea4db53c0ff074c8434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  actions: {fileID: 0}
+  attributes: {fileID: 0}
+  projectileData: {fileID: 11400000, guid: 5513a0d1cdb7dbd4eb978098513bbbe7, type: 2}
+  init: 0
+  currentRoutine: 0
 --- !u!1 &347471652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1778,8 +1781,8 @@ GameObject:
   - component: {fileID: 1198928085}
   - component: {fileID: 1198928084}
   - component: {fileID: 1198928083}
-  - component: {fileID: 1198928081}
   - component: {fileID: 1198928078}
+  - component: {fileID: 1198928087}
   - component: {fileID: 1198928080}
   - component: {fileID: 1198928079}
   - component: {fileID: 1198928086}
@@ -1789,7 +1792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1198928078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,8 +1805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917c302be2971d24b81fecb563603d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoutine: 0
-  data: {fileID: 11400000, guid: 0cccde7abbcd834409ec8198cadc1502, type: 2}
   attackTarget: {fileID: 338698182}
 --- !u!114 &1198928079
 MonoBehaviour:
@@ -1834,19 +1835,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5499524644809545153, guid: fdc7dd41580164f4aa73d70b65597485, type: 3}
   projectileSource: {fileID: 1552105492}
   projectileData: {fileID: 0}
---- !u!114 &1198928081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198928077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a26ef834e5cc94a9f01614bb2d726b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: dffafb7acaf008b49a0838be89ebfe4f, type: 2}
 --- !u!136 &1198928083
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1921,6 +1909,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 5
+--- !u!114 &1198928087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198928077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114a4010b4d79ba4093368fea56191fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  actions: {fileID: 0}
+  attributes: {fileID: 0}
+  projectileData: {fileID: 11400000, guid: 5513a0d1cdb7dbd4eb978098513bbbe7, type: 2}
+  init: 0
+  attackTarget: {fileID: 338698182}
+  routineData: {fileID: 11400000, guid: 8febdd11a8b5a6a4789e4184ccce9022, type: 2}
+  currentRoutine: 0
 --- !u!1 &1263833127
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,8 +2045,8 @@ GameObject:
   - component: {fileID: 1317789918}
   - component: {fileID: 1317789917}
   - component: {fileID: 1317789916}
-  - component: {fileID: 1317789915}
   - component: {fileID: 1317789914}
+  - component: {fileID: 1317789919}
   - component: {fileID: 1317789913}
   - component: {fileID: 1317789912}
   - component: {fileID: 1317789911}
@@ -2048,7 +2056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1317789911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2103,22 +2111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917c302be2971d24b81fecb563603d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoutine: 0
-  data: {fileID: 11400000, guid: 7a7da3f4fda98c140ad466460cb7333a, type: 2}
   attackTarget: {fileID: 338698182}
---- !u!114 &1317789915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317789910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a26ef834e5cc94a9f01614bb2d726b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: 5513a0d1cdb7dbd4eb978098513bbbe7, type: 2}
 --- !u!136 &1317789916
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2180,6 +2173,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1317789919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317789910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114a4010b4d79ba4093368fea56191fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  actions: {fileID: 0}
+  attributes: {fileID: 0}
+  projectileData: {fileID: 11400000, guid: dffafb7acaf008b49a0838be89ebfe4f, type: 2}
+  init: 0
+  attackTarget: {fileID: 338698182}
+  routineData: {fileID: 11400000, guid: 0cccde7abbcd834409ec8198cadc1502, type: 2}
+  currentRoutine: 0
 --- !u!1 &1552105491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,8 +2235,8 @@ GameObject:
   - component: {fileID: 1622375563}
   - component: {fileID: 1622375562}
   - component: {fileID: 1622375561}
-  - component: {fileID: 1622375560}
   - component: {fileID: 1622375559}
+  - component: {fileID: 1622375564}
   - component: {fileID: 1622375558}
   - component: {fileID: 1622375557}
   - component: {fileID: 1622375556}
@@ -2233,7 +2246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1622375556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2288,22 +2301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917c302be2971d24b81fecb563603d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoutine: 0
-  data: {fileID: 11400000, guid: 8febdd11a8b5a6a4789e4184ccce9022, type: 2}
   attackTarget: {fileID: 338698182}
---- !u!114 &1622375560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622375555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a26ef834e5cc94a9f01614bb2d726b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: 230702764379d2947af4c66ccb572c28, type: 2}
 --- !u!136 &1622375561
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2365,6 +2363,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1622375564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622375555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114a4010b4d79ba4093368fea56191fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  actions: {fileID: 0}
+  attributes: {fileID: 0}
+  projectileData: {fileID: 11400000, guid: 230702764379d2947af4c66ccb572c28, type: 2}
+  init: 0
+  attackTarget: {fileID: 338698182}
+  routineData: {fileID: 11400000, guid: 7a7da3f4fda98c140ad466460cb7333a, type: 2}
+  currentRoutine: 0
 --- !u!1 &1766675469
 GameObject:
   m_ObjectHideFlags: 0

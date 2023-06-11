@@ -2,6 +2,6 @@
 {
     public interface IGetHit
     {
-        void HandleHit();
+        void HandleHit(int _dmg);
     }
 }

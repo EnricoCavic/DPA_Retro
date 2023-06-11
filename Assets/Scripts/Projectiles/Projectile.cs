@@ -53,11 +53,7 @@ namespace Retro.Gameplay
             if (collision.gameObject.layer == LayerMask.NameToLayer("Hitable"))
             {
                 if (collision.gameObject.TryGetComponent(out IGetHit e))
-                    e.HandleHit();
-
-                if (collision.gameObject.TryGetComponent(out CharacterAttributes attributes))
-                    attributes.TakeDamage(1);
-
+                    e.HandleHit(1);
             }
 
             if (released) return;

@@ -33,5 +33,11 @@ namespace Retro.Character
             agent.acceleration = acceleration;
             agent.SetDestination(_moveTarget);
         }
+
+        public void ResetPath()
+        {
+            if(agent.hasPath)
+                agent.ResetPath();
+        }
     }
 }
