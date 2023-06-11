@@ -24,14 +24,12 @@ namespace Retro.Character.Input
         public Action OnMoveStart { get; set; }
         public Action OnMoveCanceled { get; set; }
 
-        private void Start()
-        {
-            inputActions = InputManager.Instance.inputActions;
-            mainCam = Camera.main;
-        }
 
         private void OnEnable()
         {
+            inputActions = InputManager.Instance.inputActions;
+            mainCam = Camera.main;
+
             inputActions.Gameplay.Fire.performed += FirePerformed;
             inputActions.Gameplay.Fire.canceled += FireCanceled;
 
