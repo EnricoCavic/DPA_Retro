@@ -1,4 +1,5 @@
 using Retro.Character;
+using Retro.Gameplay;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,9 @@ public class SpawnerManager : MonoBehaviour, ISpawner
     [field: SerializeField] public float interval { get; set; }
     [field: SerializeField] [field: Range(0, 100)] public float radialRandomness { get; set; }
     [field: SerializeField] public GameObject prefab { get; set; }
-    [field: SerializeField] List<CharacterAttributesSO> ISpawner.characterAttributes { get; set; }
+    [field: SerializeField] public List<CharacterAttributesSO> characterAttributes { get; set; }
+    [field: SerializeField] public List<EnemyRoutineDataSO> characterRoutine { get; set; }
+    [field: SerializeField] public List<ProjectileDataSO> projectile { get; set; }
 
     [Space(15)]
 
@@ -24,6 +27,9 @@ public class SpawnerManager : MonoBehaviour, ISpawner
 
     public List<List<EnemyCHaracterRoutine>> allSpawned;
 
+    public Transform player;
+
+    [ContextMenu("Spawn")]
     void Spawn()
     {
         foreach (var s in spawnerConfigs)
@@ -42,27 +48,39 @@ public class SpawnerManager : MonoBehaviour, ISpawner
 
     IEnumerator SpawnRoutine(ISpawner spawnConfigs)
     {
-        List<EnemyCHaracterRoutine> spawnRound = new();
-
-        Vector3 spawnPosition = transform.position;
-
-        for (int i = 0; i < spawnConfigs.spawnRoundQuantity; i++)
+        for(int a = 0; a < spawnConfigs.maxSpawnCicle; a++)
         {
-            //REVER
-            if (radialRandomness != 0)
+            List<EnemyCHaracterRoutine> spawnRound = new();
+
+            Vector3 spawnPosition = transform.position;
+
+            for (int i = 0; i < spawnConfigs.spawnRoundQuantity; i++)
             {
-                Random.Range(0f, radialRandomness);
-                spawnPosition = new Vector3(spawnPosition.x, 0f, spawnPosition.z);
+                //REVER
+                if (radialRandomness != 0)
+                {
+                    Random.Range(0f, radialRandomness);
+                    spawnPosition = new Vector3(spawnPosition.x, 0f, spawnPosition.z);
+                }
+
+
+                var toBeSpawned = spawnConfigs.prefab;
+                var enemyRoutine = toBeSpawned.GetComponent<EnemyCHaracterRoutine>();
+                
+                enemyRoutine.routineData = spawnConfigs.characterRoutine[0];
+                enemyRoutine.projectileData = spawnConfigs.projectile[0];
+                enemyRoutine.attributeData = spawnConfigs.characterAttributes[0];
+
+                EnemyCHaracterRoutine spawned = Instantiate(toBeSpawned, spawnPosition, transform.rotation).GetComponent<EnemyCHaracterRoutine>();
+                spawned.attackTarget = player;
+                spawnRound.Add(spawned);
             }
 
-            GameObject spawned = Instantiate(spawnConfigs.prefab, spawnPosition, transform.rotation);
-            spawnRound.Add(spawned.GetComponent<EnemyCHaracterRoutine>());
+            allSpawned.Add(spawnRound);
+
+
+            yield return new WaitForSeconds(spawnConfigs.interval);
         }
-
-        allSpawned.Add(spawnRound);
-
-        
-        yield return new WaitForSeconds(spawnConfigs.interval);
     }
 
     

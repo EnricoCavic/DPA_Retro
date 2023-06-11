@@ -15,8 +15,8 @@ namespace Retro.Character
         [HideInInspector] public CharacterAnimations animations;
         [HideInInspector] public CapsuleCollider capsuleCollider;
 
-        [SerializeField] private ProjectileDataSO projectileData;
-        [SerializeField] private CharacterAttributesSO attributeData;
+        [SerializeField] public ProjectileDataSO projectileData;
+        [SerializeField] public CharacterAttributesSO attributeData;
 
         [HideInInspector] public bool init = false;
         public virtual void Initialize()
