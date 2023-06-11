@@ -18,6 +18,10 @@ namespace Retro.Managers
         private void Awake()
         {
             if (!InstanceSetup(this)) return;
+        }
+
+        private void Start()
+        {
             SpawnPlayer();
         }
 
