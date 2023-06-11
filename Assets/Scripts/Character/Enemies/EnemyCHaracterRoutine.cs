@@ -26,6 +26,13 @@ namespace Retro.Character
             inputs.attackTarget = attackTarget;
         }
 
+        public void SetAttackTarget(Transform _newTarget)
+        {
+            attackTarget = _newTarget;
+            var inputs = (EnemyInput)inputHandler;
+            inputs.attackTarget = attackTarget;
+        }
+
         private void OnEnable()
         {
             if (!init) Initialize();
@@ -33,9 +40,10 @@ namespace Retro.Character
 
         private void Update()
         {
-            distanceToTarget = Vector3.Distance(attackTarget.position, transform.position);
             currentFireInterval += Time.deltaTime;
+            if (attackTarget == null) return;
 
+            distanceToTarget = Vector3.Distance(attackTarget.position, transform.position);
             animations.SetMoveSpeed(movement.currentMovementSpeed);
 
             switch (currentRoutine)

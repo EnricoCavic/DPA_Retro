@@ -22,6 +22,8 @@ namespace Retro.Character
         public Vector3 GetMoveTarget() => attackTarget.position;
         public Vector3 GetLookTarget()
         {
+            if (attackTarget == null) return Vector3.zero;
+
             lookTarget = attackTarget.position;
             lookTarget.y = 0f;
             return lookTarget;

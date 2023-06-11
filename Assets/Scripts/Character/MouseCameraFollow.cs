@@ -25,5 +25,6 @@ namespace Retro.Character
             scaledDirection = (playerInput.GetLookTarget() - transform.position) * distanceMultiplier;
             cameraLookTarget.position = transform.position + scaledDirection;
         }
+
     }
 }

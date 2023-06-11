@@ -9,19 +9,26 @@ namespace Retro.Managers
     public class GameplayManager : Singleton<GameplayManager>
     {
         public GameObject playerPrefab;
+        public Transform spawnedPlayer;
+        public float rewindTimeScale = 0.3f;
+        public int currentLifes = 3;
 
         public List<EnemyCHaracterRoutine> spawnedEnemies;
-
-        public float rewindTimeScale = 0.3f;
 
         private void Awake()
         {
             if (!InstanceSetup(this)) return;
-            var player = Instantiate(playerPrefab).transform;
+            SpawnPlayer();
+        }
+
+        private void SpawnPlayer()
+        {
+            spawnedPlayer = Instantiate(playerPrefab).transform;
+            spawnedPlayer.GetComponent<CharacterHealth>().onCharacterDied += DestroyPlayer;
 
             for (int i = 0; i < spawnedEnemies.Count; i++)
             {
-                spawnedEnemies[i].attackTarget = player;
+                spawnedEnemies[i].SetAttackTarget(spawnedPlayer);
             }
         }
 
@@ -50,6 +57,29 @@ namespace Retro.Managers
             { 
                 yield return null;
                 Time.timeScale += Time.unscaledDeltaTime * 1.4f;
+            }
+        }
+
+        private void DestroyPlayer()
+        {
+            StartCoroutine(DestroyCoroutine());
+            IEnumerator DestroyCoroutine()
+            {
+                currentLifes--;
+                if (currentLifes <= 0)
+                {
+                    // finish game
+                    yield break;
+                }
+
+                Destroy(spawnedPlayer.gameObject);
+                spawnedPlayer = null;
+                for (int i = 0; i < spawnedEnemies.Count; i++)
+                {
+                    spawnedEnemies[i].SetAttackTarget(null);
+                }
+                yield return new WaitForSeconds(1f);
+                SpawnPlayer();
             }
         }
     }

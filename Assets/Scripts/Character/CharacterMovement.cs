@@ -20,11 +20,6 @@ namespace Retro.Character
 
         public void PlayerLookAt(Vector3 _lookTarget)
         {
-            //transform.LookAt(_lookTarget);
-
-            //var rotTarget = new Vector3(0, transform.eulerAngles.y, 0);
-            //transform.eulerAngles = rotTarget;
-
             lookDirection = (_lookTarget - transform.position).normalized;
             lookRotation = Quaternion.LookRotation(lookDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * attributeData.rotationSpeed);

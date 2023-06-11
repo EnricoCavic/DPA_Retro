@@ -361,11 +361,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8359977186932213528, guid: 5320189e7db97694e8d436d44dad2631, type: 3}
+  spawnedPlayer: {fileID: 0}
+  rewindTimeScale: 0.1
+  currentLifes: 3
   spawnedEnemies:
   - {fileID: 224172165803109015}
   - {fileID: 15360434}
   - {fileID: 1205244322}
-  rewindTimeScale: 0.1
 --- !u!1 &582021173
 GameObject:
   m_ObjectHideFlags: 0

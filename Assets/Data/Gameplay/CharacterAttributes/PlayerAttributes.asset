@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55515c169272b62468dc37eaa0f4b31c, type: 3}
   m_Name: PlayerAttributes
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 3
   rotationSpeed: 15
   speed: 8
   acceleration: 50
