@@ -16,7 +16,7 @@ namespace Retro.Character
 
         [HideInInspector] public ProjectileDataSO projectileData;
 
-        private void Awake()
+        private void Start()
         {
             poolManager = ObjectPoolManager.Instance;
         }

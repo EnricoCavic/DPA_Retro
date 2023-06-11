@@ -16,7 +16,7 @@ namespace Retro.Character
         private void Start()
         {
             virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
-            virtualCamera.m_Follow = transform;
+            virtualCamera.m_Follow = cameraLookTarget;
             playerInput = GetComponent<PlayerInput>();
         }
 

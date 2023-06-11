@@ -72,7 +72,7 @@ namespace Retro.Managers
                 currentLifes--;
                 if (currentLifes <= 0)
                 {
-                    // finish game
+                    GetComponent<LoadNextScene>().Load();
                     yield break;
                 }
 
