@@ -347,8 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81c62ca91e5d504ca1730c54d8630eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  acceleration: 12
+  attributeData: {fileID: 0}
 --- !u!136 &338698188
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -403,10 +402,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 338698181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deeee28698605bc42adcab887ce23d8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 618caa26acbb61c4c8690b7d06708eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
+  attributeData: {fileID: 0}
 --- !u!114 &338698191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,8 +434,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
   actions: {fileID: 0}
-  attributes: {fileID: 0}
+  health: {fileID: 0}
   projectileData: {fileID: 11400000, guid: 5513a0d1cdb7dbd4eb978098513bbbe7, type: 2}
+  attributeData: {fileID: 11400000, guid: 4aad08a0ecaa3b0439fbae9a3160b5cc, type: 2}
   init: 0
   currentRoutine: 0
 --- !u!1 &347471652
@@ -1818,8 +1818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81c62ca91e5d504ca1730c54d8630eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  acceleration: 12
+  attributeData: {fileID: 0}
 --- !u!114 &1198928080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1905,10 +1904,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1198928077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deeee28698605bc42adcab887ce23d8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 618caa26acbb61c4c8690b7d06708eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  attributeData: {fileID: 0}
 --- !u!114 &1198928087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1923,8 +1922,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
   actions: {fileID: 0}
-  attributes: {fileID: 0}
+  health: {fileID: 0}
   projectileData: {fileID: 11400000, guid: 5513a0d1cdb7dbd4eb978098513bbbe7, type: 2}
+  attributeData: {fileID: 11400000, guid: 1f77612edb0d34341849a76702d0256b, type: 2}
   init: 0
   attackTarget: {fileID: 338698182}
   routineData: {fileID: 11400000, guid: 8febdd11a8b5a6a4789e4184ccce9022, type: 2}
@@ -2066,10 +2066,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1317789910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deeee28698605bc42adcab887ce23d8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 618caa26acbb61c4c8690b7d06708eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  attributeData: {fileID: 0}
 --- !u!114 &1317789912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2082,8 +2082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81c62ca91e5d504ca1730c54d8630eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  acceleration: 12
+  attributeData: {fileID: 0}
 --- !u!114 &1317789913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2187,8 +2186,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
   actions: {fileID: 0}
-  attributes: {fileID: 0}
+  health: {fileID: 0}
   projectileData: {fileID: 11400000, guid: dffafb7acaf008b49a0838be89ebfe4f, type: 2}
+  attributeData: {fileID: 11400000, guid: 1f77612edb0d34341849a76702d0256b, type: 2}
   init: 0
   attackTarget: {fileID: 338698182}
   routineData: {fileID: 11400000, guid: 0cccde7abbcd834409ec8198cadc1502, type: 2}
@@ -2256,10 +2256,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1622375555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deeee28698605bc42adcab887ce23d8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 618caa26acbb61c4c8690b7d06708eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  attributeData: {fileID: 0}
 --- !u!114 &1622375557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,8 +2272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81c62ca91e5d504ca1730c54d8630eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  acceleration: 12
+  attributeData: {fileID: 0}
 --- !u!114 &1622375558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,8 +2376,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
   actions: {fileID: 0}
-  attributes: {fileID: 0}
+  health: {fileID: 0}
   projectileData: {fileID: 11400000, guid: 230702764379d2947af4c66ccb572c28, type: 2}
+  attributeData: {fileID: 11400000, guid: 1f77612edb0d34341849a76702d0256b, type: 2}
   init: 0
   attackTarget: {fileID: 338698182}
   routineData: {fileID: 11400000, guid: 7a7da3f4fda98c140ad466460cb7333a, type: 2}

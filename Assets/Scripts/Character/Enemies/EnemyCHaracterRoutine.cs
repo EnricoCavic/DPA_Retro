@@ -78,7 +78,7 @@ namespace Retro.Character
         public void HandleHit(int _dmg)
         {
             currentRoutine = EnemyRoutine.HitStun;
-            attributes.TakeDamage(_dmg);
+            health.TakeDamage(_dmg);
 
             Sequence mySequence = DOTween.Sequence();
             mySequence.Insert(0, transform

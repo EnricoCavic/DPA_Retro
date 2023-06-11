@@ -6,10 +6,7 @@ namespace Retro.Character
 {
     public class CharacterMovement : MonoBehaviour
     {
-
-        public float speed;
-        public float acceleration;
-
+        [HideInInspector] public CharacterAttributesSO attributeData;
         private NavMeshAgent agent;
 
         private void Awake()
@@ -29,8 +26,8 @@ namespace Retro.Character
         {
             if (_moveTarget == transform.position) return;
 
-            agent.speed = speed;
-            agent.acceleration = acceleration;
+            agent.speed = attributeData.speed;
+            agent.acceleration = attributeData.acceleration;
             agent.SetDestination(_moveTarget);
         }
 

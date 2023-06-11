@@ -1,3 +1,4 @@
+using Retro.Character;
 using Retro.Managers;
 using System;
 using System.Collections;
@@ -71,7 +72,7 @@ public class TimeRetro : MonoBehaviour
 
         playerData.position = player.transform.position;
         playerData.rotation = player.transform.rotation;
-        playerData.hp = player.GetComponent<CharacterAttributes>().currentHp;
+        playerData.hp = player.GetComponent<CharacterHealth>().currentHp;
         
         return playerData;
     }

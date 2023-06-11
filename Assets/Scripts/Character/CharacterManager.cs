@@ -11,10 +11,10 @@ namespace Retro.Character
         public IGiveInput inputHandler { get; private set; }
         [HideInInspector] public CharacterMovement movement;
         [HideInInspector] public CharacterActions actions;
-        [HideInInspector] public CharacterAttributes attributes;
+        [HideInInspector] public CharacterHealth health;
 
         [SerializeField] private ProjectileDataSO projectileData;
-
+        [SerializeField] private CharacterAttributesSO attributeData;
 
         [HideInInspector] public bool init = false;
         public void Initialize()
@@ -23,9 +23,12 @@ namespace Retro.Character
             inputHandler = GetComponent<IGiveInput>();
             movement = GetComponent<CharacterMovement>();
             actions = GetComponent<CharacterActions>();
-            attributes = GetComponent<CharacterAttributes>();
+            health = GetComponent<CharacterHealth>();
 
+            movement.attributeData = attributeData;
             actions.projectileData = projectileData;
+            health.attributeData = attributeData;
+
         }
 
     }
