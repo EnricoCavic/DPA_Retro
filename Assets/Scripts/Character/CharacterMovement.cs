@@ -8,6 +8,7 @@ namespace Retro.Character
     {
         [HideInInspector] public CharacterAttributesSO attributeData;
         private NavMeshAgent agent;
+        public float currentMovementSpeed => agent.velocity.normalized.magnitude;
 
         Vector3 lookDirection;
         Quaternion lookRotation;
@@ -40,7 +41,7 @@ namespace Retro.Character
 
         public void Stop()
         {
-                agent.ResetPath();
+            agent.ResetPath();
         }
     }
 }

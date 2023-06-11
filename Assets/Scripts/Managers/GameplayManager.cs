@@ -41,7 +41,7 @@ namespace Retro.Managers
             while(Time.timeScale < 1f)
             { 
                 yield return null;
-                Time.timeScale += Time.unscaledDeltaTime * 2f;
+                Time.timeScale += Time.unscaledDeltaTime * 1.4f;
             }
         }
     }

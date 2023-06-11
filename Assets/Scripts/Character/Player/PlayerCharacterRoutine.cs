@@ -46,14 +46,18 @@ namespace Retro.Character
                 case PlayerRoutine.Moving:
                     movement.PlayerLookAt(inputHandler.GetLookTarget());
                     movement.MovePlayer(inputHandler.GetMoveTarget());
+                    animations.SetMoveSpeed(movement.currentMovementSpeed);
+
                     break;
             }
         }
 
         public void FireInput()
         {
-            if (currentRoutine == PlayerRoutine.Moving)
-                actions.Fire();
+            if (currentRoutine != PlayerRoutine.Moving) return;
+
+            animations.AttackAnimation();
+            actions.Fire();
         }
 
         public void RewindInput()

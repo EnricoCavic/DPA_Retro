@@ -12,6 +12,7 @@ namespace Retro.Character
         [HideInInspector] public CharacterMovement movement;
         [HideInInspector] public CharacterActions actions;
         [HideInInspector] public CharacterHealth health;
+        [HideInInspector] public CharacterAnimations animations;
         [HideInInspector] public CapsuleCollider capsuleCollider;
 
         [SerializeField] private ProjectileDataSO projectileData;
@@ -25,6 +26,7 @@ namespace Retro.Character
             movement = GetComponent<CharacterMovement>();
             actions = GetComponent<CharacterActions>();
             health = GetComponent<CharacterHealth>();
+            animations = GetComponent<CharacterAnimations>();
             capsuleCollider = GetComponent<CapsuleCollider>();
 
             movement.attributeData = attributeData;

@@ -35,6 +35,8 @@ namespace Retro.Character
             distanceToTarget = Vector3.Distance(attackTarget.position, transform.position);
             currentFireInterval += Time.deltaTime;
 
+            animations.SetMoveSpeed(movement.currentMovementSpeed);
+
             switch (currentRoutine)
             {
                 case EnemyRoutine.Chasing:
@@ -73,6 +75,7 @@ namespace Retro.Character
             if (currentFireInterval >= routineData.fireInterval)
             {
                 actions.Fire();
+                animations.AttackAnimation();
                 currentFireInterval = 0f;
             }
         }
