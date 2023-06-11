@@ -18,9 +18,6 @@ MonoBehaviour:
   <interval>k__BackingField: 5
   <radialRandomness>k__BackingField: 0
   <prefab>k__BackingField: {fileID: 5068338156793116034, guid: e03efb1b7f4dbfc4eba04d55079c5efa, type: 3}
-  <characterAttributes>k__BackingField:
-  - {fileID: 11400000, guid: 1f77612edb0d34341849a76702d0256b, type: 2}
-  <characterRoutine>k__BackingField:
-  - {fileID: 11400000, guid: 8febdd11a8b5a6a4789e4184ccce9022, type: 2}
-  <projectile>k__BackingField:
-  - {fileID: 11400000, guid: 5513a0d1cdb7dbd4eb978098513bbbe7, type: 2}
+  <spawnableConfigs>k__BackingField:
+  - {fileID: 11400000, guid: 8bc288d7f6b212f49ae549bd28cfbefe, type: 2}
+  - {fileID: 11400000, guid: 06121413bbca39e499107af96166f026, type: 2}

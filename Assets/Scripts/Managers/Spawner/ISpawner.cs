@@ -11,11 +11,8 @@ public interface ISpawner
     public int spawnRoundQuantity { get; set; }
     public float interval { get; set; }
     public float radialRandomness { get; set; }
-    public List<CharacterAttributesSO> characterAttributes { get; set; }
-    public List<EnemyRoutineDataSO> characterRoutine { get; set; }
-    public List<ProjectileDataSO> projectile { get; set; }
-
     public GameObject prefab { get; set; }
+    public List<SpawnableConfigsSO> spawnableConfigs { get; set; }
 
 
 

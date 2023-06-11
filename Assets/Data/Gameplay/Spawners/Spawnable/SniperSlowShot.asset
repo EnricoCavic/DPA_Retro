@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b6d0f206feb1e418f8563272f142cb, type: 3}
+  m_Name: SniperSlowShot
+  m_EditorClassIdentifier: 
+  <characterAttributes>k__BackingField: {fileID: 11400000, guid: 1f77612edb0d34341849a76702d0256b, type: 2}
+  <characterRoutine>k__BackingField: {fileID: 11400000, guid: 7a7da3f4fda98c140ad466460cb7333a, type: 2}
+  <projectile>k__BackingField: {fileID: 11400000, guid: 230702764379d2947af4c66ccb572c28, type: 2}

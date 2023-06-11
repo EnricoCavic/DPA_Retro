@@ -15,9 +15,8 @@ public class SpawnerManager : MonoBehaviour, ISpawner
     [field: SerializeField] public float interval { get; set; }
     [field: SerializeField] [field: Range(0, 100)] public float radialRandomness { get; set; }
     [field: SerializeField] public GameObject prefab { get; set; }
-    [field: SerializeField] public List<CharacterAttributesSO> characterAttributes { get; set; }
-    [field: SerializeField] public List<EnemyRoutineDataSO> characterRoutine { get; set; }
-    [field: SerializeField] public List<ProjectileDataSO> projectile { get; set; }
+    [field: SerializeField] public List<SpawnableConfigsSO> spawnableConfigs { get; set; }
+
 
     [Space(15)]
 
@@ -66,10 +65,12 @@ public class SpawnerManager : MonoBehaviour, ISpawner
 
                 var toBeSpawned = spawnConfigs.prefab;
                 var enemyRoutine = toBeSpawned.GetComponent<EnemyCHaracterRoutine>();
-                
-                enemyRoutine.routineData = spawnConfigs.characterRoutine[0];
-                enemyRoutine.projectileData = spawnConfigs.projectile[0];
-                enemyRoutine.attributeData = spawnConfigs.characterAttributes[0];
+
+
+                enemyRoutine.routineData = spawnConfigs.spawnableConfigs[0].characterRoutine;
+                enemyRoutine.projectileData = spawnConfigs.spawnableConfigs[0].projectile;
+                enemyRoutine.attributeData = spawnConfigs.spawnableConfigs[0].characterAttributes;
+
 
                 EnemyCHaracterRoutine spawned = Instantiate(toBeSpawned, spawnPosition, transform.rotation).GetComponent<EnemyCHaracterRoutine>();
                 spawned.attackTarget = player;
