@@ -3,6 +3,7 @@ using Retro.Managers;
 using System;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using System.Collections;
 
 namespace Retro.Character.Input
 {
@@ -10,6 +11,7 @@ namespace Retro.Character.Input
     {       
         private PlayerActions inputActions;
         private Camera mainCam;
+        private InputManager inputInstance;
 
         private Vector2 mousePosition;
         private Ray screenToRay;
@@ -25,19 +27,29 @@ namespace Retro.Character.Input
         public Action OnMoveCanceled { get; set; }
 
 
+
         private void OnEnable()
         {
-            inputActions = InputManager.Instance.inputActions;
-            mainCam = Camera.main;
+            StartCoroutine(OnEnableCoroutine());
+            IEnumerator OnEnableCoroutine()
+            {
+                inputInstance = InputManager.Instance;
+                while (inputInstance == null)
+                    yield return null;
 
-            inputActions.Gameplay.Fire.performed += FirePerformed;
-            inputActions.Gameplay.Fire.canceled += FireCanceled;
+                inputActions = inputInstance.inputActions;
+                mainCam = Camera.main;
 
-            inputActions.Gameplay.Special.performed += SpecialPerformed;
+                inputActions.Gameplay.Fire.performed += FirePerformed;
+                inputActions.Gameplay.Fire.canceled += FireCanceled;
 
-            inputActions.Gameplay.Move.performed += MovePerformed;
-            inputActions.Gameplay.Move.canceled += MoveCanceled;
+                inputActions.Gameplay.Special.performed += SpecialPerformed;
+
+                inputActions.Gameplay.Move.performed += MovePerformed;
+                inputActions.Gameplay.Move.canceled += MoveCanceled;
+            }
         }
+
 
         private void OnDisable()
         {
