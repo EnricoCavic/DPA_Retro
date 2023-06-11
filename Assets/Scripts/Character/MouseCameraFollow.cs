@@ -1,5 +1,6 @@
 ﻿using Retro.Character.Input;
 using UnityEngine;
+using Cinemachine;
 
 namespace Retro.Character
 {
@@ -8,10 +9,16 @@ namespace Retro.Character
         public Transform cameraLookTarget;
         public float distanceMultiplier = 0.2f;
 
+        private CinemachineVirtualCamera virtualCamera;
         private PlayerInput playerInput;
         Vector3 scaledDirection;
 
-        private void Start() => playerInput = GetComponent<PlayerInput>();
+        private void Start()
+        {
+            virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+            virtualCamera.m_Follow = transform;
+            playerInput = GetComponent<PlayerInput>();
+        }
 
         private void Update()
         {
