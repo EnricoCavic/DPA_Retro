@@ -24,7 +24,7 @@ namespace Retro.Character.Input
         public Action OnMoveStart { get; set; }
         public Action OnMoveCanceled { get; set; }
 
-        private void Awake()
+        private void Start()
         {
             inputActions = InputManager.Instance.inputActions;
             mainCam = Camera.main;
