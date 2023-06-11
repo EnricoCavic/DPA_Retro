@@ -24,7 +24,7 @@ public class SpawnerManager : MonoBehaviour, ISpawner
     [Space(7.5f)]
     public List<SpawnerConfigsSO> spawnerConfigs;
 
-    public List<List<EnemyCHaracterRoutine>> allSpawned;
+    public List<List<EnemyCHaracterRoutine>> allSpawned = new();
 
     public Transform player;
 
