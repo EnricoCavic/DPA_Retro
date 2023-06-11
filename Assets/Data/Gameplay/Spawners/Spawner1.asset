@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04890e9f90607b2468e1a3cb73e24d7e, type: 3}
   m_Name: Spawner1
   m_EditorClassIdentifier: 
-  overrideParent: 0
+  parentOverride: 0
   <spawnCount>k__BackingField: 0
-  <interval>k__BackingField: 0
+  <interval>k__BackingField: 1
   <radialRandomness>k__BackingField: 0
-  <characterAttributes>k__BackingField: {fileID: 11400000, guid: 1f77612edb0d34341849a76702d0256b, type: 2}
+  <prefab>k__BackingField: {fileID: 0}
