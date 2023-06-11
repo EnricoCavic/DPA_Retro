@@ -89,19 +89,33 @@ public class TimeRetro : MonoBehaviour
         // voltar nos steps 
         // lógica de cada step
         // evento fim do rewind
-        //StartCoroutine(RewindCo());
+        
 
-        SetPlayerData(playerTimestamps.Dequeue());
-        playerTimestamps.Clear();
+        if (playerTimestamps.Count == 0) return;
+
+        StartCoroutine(RewindCo());
+
+        //SetPlayerData(playerTimestamps.Dequeue());
+        //playerTimestamps.Clear();
     }
 
     public IEnumerator RewindCo()
     {
-        for (int i = 0; i < playerTimestamps.Count; i++)
+        var array = playerTimestamps.ToArray();
+        for (int i = playerTimestamps.Count -1; i >= 0; i--)
         {
-            SetPlayerData(playerTimestamps.Dequeue());
-            yield return null;
+            //SetPlayerData(playerTimestamps.Dequeue());
+
+            var current = array[i];
+            Debug.Log(current.position);
+            SetPlayerData(current);
+
+            yield return new WaitForSeconds(0.1f);
+
+            //yield return null;
         }
+
+        playerTimestamps.Clear();
     }
 
 }
