@@ -76,7 +76,7 @@ namespace Retro.Managers
                     yield break;
                 }
 
-                Destroy(spawnedPlayer.gameObject);
+                //Destroy(spawnedPlayer.gameObject);
                 spawnedPlayer = null;
                 for (int i = 0; i < spawnedEnemies.Count; i++)
                 {

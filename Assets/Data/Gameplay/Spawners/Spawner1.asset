@@ -21,3 +21,4 @@ MonoBehaviour:
   <spawnableConfigs>k__BackingField:
   - {fileID: 11400000, guid: 8bc288d7f6b212f49ae549bd28cfbefe, type: 2}
   - {fileID: 11400000, guid: 06121413bbca39e499107af96166f026, type: 2}
+  - {fileID: 11400000, guid: 4cd61a3f282e797449110da004c6c3b6, type: 2}
