@@ -67,7 +67,7 @@ namespace Retro.Character
                 return;
             }
 
-            movement.ResetPath();
+            movement.Stop();
             if (currentFireInterval >= routineData.fireInterval)
             {
                 actions.Fire();

@@ -18,6 +18,8 @@ namespace Retro.Character.Input
         public Action OnFireStart { get; set; }
         public Action OnFireCanceled { get; set; }
 
+        public Action OnSpecialStart { get; set; }
+
         public Action OnMoveStart { get; set; }
         public Action OnMoveCanceled { get; set; }
 
@@ -32,6 +34,8 @@ namespace Retro.Character.Input
             inputActions.Gameplay.Fire.performed += FirePerformed;
             inputActions.Gameplay.Fire.canceled += FireCanceled;
 
+            inputActions.Gameplay.Special.performed += SpecialPerformed;
+
             inputActions.Gameplay.Move.performed += MovePerformed;
             inputActions.Gameplay.Move.canceled += MoveCanceled;
         }
@@ -41,9 +45,13 @@ namespace Retro.Character.Input
             inputActions.Gameplay.Fire.performed -= FirePerformed;
             inputActions.Gameplay.Fire.canceled -= FireCanceled;
 
+            inputActions.Gameplay.Special.performed -= SpecialPerformed;
+
             inputActions.Gameplay.Move.performed -= MovePerformed;
             inputActions.Gameplay.Move.canceled -= MoveCanceled;
         }
+
+        private void SpecialPerformed(InputAction.CallbackContext obj) => OnSpecialStart?.Invoke();
 
         private void FirePerformed(InputAction.CallbackContext obj) => OnFireStart?.Invoke();
         private void FireCanceled(InputAction.CallbackContext obj) => OnFireCanceled?.Invoke();  

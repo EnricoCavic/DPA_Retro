@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervalFraction: 0.2
-  queueLimit: 20
+  queueLimit: 10
 --- !u!114 &338698192
 MonoBehaviour:
   m_ObjectHideFlags: 0

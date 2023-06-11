@@ -17,7 +17,7 @@ namespace Retro.Character
         [SerializeField] private CharacterAttributesSO attributeData;
 
         [HideInInspector] public bool init = false;
-        public void Initialize()
+        public virtual void Initialize()
         {
             init = true;
             inputHandler = GetComponent<IGiveInput>();

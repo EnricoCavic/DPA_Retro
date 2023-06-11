@@ -31,10 +31,9 @@ namespace Retro.Character
             agent.SetDestination(_moveTarget);
         }
 
-        public void ResetPath()
+        public void Stop()
         {
-            if(agent.hasPath)
-                agent.ResetPath();
+            agent.ResetPath();
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public struct PlayerTimestamp
 {
@@ -24,7 +25,7 @@ public struct PlayerTimestamp
 public class TimeRetro : MonoBehaviour
 {
     private Queue<PlayerTimestamp> playerTimestamps;
-    private PlayerActions inputActions;
+    private PlayerCharacterRoutine characterRoutine;
 
     public float intervalFraction;
     public int queueLimit;
@@ -38,18 +39,8 @@ public class TimeRetro : MonoBehaviour
 
     private void Awake()
     {
+        characterRoutine = GetComponent<PlayerCharacterRoutine>();
         playerTimestamps = new Queue<PlayerTimestamp>();
-        inputActions = InputManager.Instance.inputActions;
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Gameplay.Special.performed += Rewind;
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Gameplay.Special.performed -= Rewind;
     }
 
     // Update() salvar steps de acordo com fração do delta time
@@ -83,7 +74,7 @@ public class TimeRetro : MonoBehaviour
         transform.rotation = data.rotation;
     }
 
-    public void Rewind(UnityEngine.InputSystem.InputAction.CallbackContext _ctx)
+    public void Rewind()
     {
         // evento de inicio
         // lógica de tempo global
@@ -93,7 +84,7 @@ public class TimeRetro : MonoBehaviour
         
 
         if (playerTimestamps.Count == 0) return;
-
+        characterRoutine.currentRoutine = PlayerRoutine.TimeRetro;
         StartCoroutine(RewindCo());
 
         //SetPlayerData(playerTimestamps.Dequeue());
@@ -115,7 +106,7 @@ public class TimeRetro : MonoBehaviour
 
             //yield return null;
         }
-
+        characterRoutine.currentRoutine = PlayerRoutine.Moving;
         playerTimestamps.Clear();
     }
 
