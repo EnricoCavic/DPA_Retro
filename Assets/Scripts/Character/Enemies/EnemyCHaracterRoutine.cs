@@ -75,7 +75,7 @@ namespace Retro.Character
             }
         }
 
-        public void HandleHit(int _dmg)
+        public void HandleHit(int _dmg, Vector3 _direction)
         {
             currentRoutine = EnemyRoutine.HitStun;
             health.TakeDamage(_dmg);
@@ -84,7 +84,7 @@ namespace Retro.Character
             mySequence.Insert(0, transform
                 .DOPunchPosition
                 (
-                punch: transform.forward,
+                punch: _direction,
                 duration: 0.2f,
                 vibrato: 1,
                 elasticity: 1

@@ -27,6 +27,7 @@ public class TimeRetro : MonoBehaviour
     private Queue<PlayerTimestamp> playerTimestamps;
     private PlayerCharacterRoutine characterRoutine;
 
+    public float rewindInterval = 0.1f;
     public float intervalFraction;
     public int queueLimit;
 
@@ -85,6 +86,7 @@ public class TimeRetro : MonoBehaviour
 
         if (playerTimestamps.Count == 0) return;
         characterRoutine.currentRoutine = PlayerRoutine.TimeRetro;
+        Time.timeScale = 0.3f;
         StartCoroutine(RewindCo());
 
         //SetPlayerData(playerTimestamps.Dequeue());
@@ -102,10 +104,12 @@ public class TimeRetro : MonoBehaviour
             Debug.Log(current.position);
             SetPlayerData(current);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(rewindInterval);
 
             //yield return null;
         }
+
+        Time.timeScale = 1f;
         characterRoutine.currentRoutine = PlayerRoutine.Moving;
         playerTimestamps.Clear();
     }

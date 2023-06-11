@@ -33,7 +33,7 @@ namespace Retro.Character
 
         public void Stop()
         {
-            agent.ResetPath();
+                agent.ResetPath();
         }
     }
 }

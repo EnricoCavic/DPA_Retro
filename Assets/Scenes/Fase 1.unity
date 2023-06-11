@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ba78aa122cd854ab5d87971c9b0baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewindInterval: 0.05
   intervalFraction: 0.2
   queueLimit: 10
 --- !u!114 &338698192

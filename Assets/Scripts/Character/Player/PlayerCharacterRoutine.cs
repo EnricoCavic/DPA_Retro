@@ -64,7 +64,7 @@ namespace Retro.Character
             timeRetro.Rewind();
         }
 
-        public void HandleHit(int _dmg)
+        public void HandleHit(int _dmg, Vector3 _direction)
         {
             if (currentRoutine == PlayerRoutine.TimeRetro)
                 return;
@@ -76,7 +76,7 @@ namespace Retro.Character
             mySequence.Insert(0, transform
                 .DOPunchPosition
                 (
-                punch: transform.forward,
+                punch: _direction,
                 duration: 0.2f,
                 vibrato: 1,
                 elasticity: 1
