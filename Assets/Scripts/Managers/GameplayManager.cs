@@ -10,6 +10,8 @@ namespace Retro.Managers
     {
         public List<EnemyCHaracterRoutine> spawnedEnemies;
 
+        public float rewindTimeScale = 0.3f;
+
         private void Awake()
         {
             if (!InstanceSetup(this)) return;
@@ -17,19 +19,29 @@ namespace Retro.Managers
 
         public void StartRewind()
         {
-            Time.timeScale = 0.3f;
+            Time.timeScale = rewindTimeScale;
             for (int i = 0; i < spawnedEnemies.Count; i++)
             {
                 spawnedEnemies[i].currentRoutine = EnemyRoutine.GlobalRewind;
             }
         }
 
+
         public void FinishRewind()
         {
-            Time.timeScale = 1f;
+            StartCoroutine(RestoreTimeScale());
             for (int i = 0; i < spawnedEnemies.Count; i++)
             {
                 spawnedEnemies[i].currentRoutine = EnemyRoutine.Chasing;
+            }
+        }
+
+        private IEnumerator RestoreTimeScale()
+        {
+            while(Time.timeScale < 1f)
+            { 
+                yield return null;
+                Time.timeScale += Time.unscaledDeltaTime * 2f;
             }
         }
     }

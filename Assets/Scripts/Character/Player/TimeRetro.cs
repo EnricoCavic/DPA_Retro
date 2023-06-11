@@ -38,7 +38,12 @@ public class TimeRetro : MonoBehaviour
     {
         characterRoutine = GetComponent<PlayerCharacterRoutine>();
         playerTimestamps = new Queue<PlayerTimestamp>();
+    }
+
+    private void Start()
+    {
         gameplayManager = GameplayManager.Instance;
+        
     }
 
     void Update()
