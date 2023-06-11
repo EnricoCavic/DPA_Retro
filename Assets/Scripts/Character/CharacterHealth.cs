@@ -9,7 +9,7 @@ namespace Retro.Character
         [HideInInspector] public CharacterAttributesSO attributeData;
         public int currentHp { get; private set; }
 
-        private void Awake()
+        private void Start()
         {
             currentHp = attributeData.maxHealth;
         }
