@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 969ea914c684dce4582b38b58dc0e2f3
+labels:
+- Spawner
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
