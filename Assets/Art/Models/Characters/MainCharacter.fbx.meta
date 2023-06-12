@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Toon_Material
+    second: {fileID: 2100000, guid: d223d69f8f8430542875de88a5033608, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Toon_Material.001
     second: {fileID: 2100000, guid: d223d69f8f8430542875de88a5033608, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toon_Material_outline
+    second: {fileID: 2100000, guid: 8b6341bf8c8eabd4190bf7173a203155, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
