@@ -1,5 +1,6 @@
 using Retro.Character;
 using Retro.Generic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,14 @@ namespace Retro.Managers
     public class GameplayManager : Singleton<GameplayManager>
     {
         public GameObject playerPrefab;
-        public Transform spawnedPlayer;
+        public Transform spawnedPlayerPosition;
+        public PlayerCharacterRoutine player;
         public float rewindTimeScale = 0.3f;
         public int currentLifes = 3;
+
+        public Action<int> onLifeLost;
+
+        public float currentRewindCooldown => player != null ? player.currentRewindCooldown : 1f;
 
         public List<EnemyCHaracterRoutine> spawnedEnemies;
         private List<SpawnerManager> spawners;
@@ -34,12 +40,13 @@ namespace Retro.Managers
 
         private void SpawnPlayer()
         {
-            spawnedPlayer = Instantiate(playerPrefab).transform;
-            spawnedPlayer.GetComponent<CharacterHealth>().onCharacterDied += DestroyPlayer;
+            spawnedPlayerPosition = Instantiate(playerPrefab).transform;
+            player = spawnedPlayerPosition.GetComponent<PlayerCharacterRoutine>();
+            player.health.onCharacterDied += DestroyPlayer;
 
             for (int i = 0; i < spawnedEnemies.Count; i++)
             {
-                spawnedEnemies[i].SetAttackTarget(spawnedPlayer);
+                spawnedEnemies[i].SetAttackTarget(spawnedPlayerPosition);
             }
         }
 
@@ -77,14 +84,16 @@ namespace Retro.Managers
             IEnumerator DestroyCoroutine()
             {
                 currentLifes--;
-                Destroy(spawnedPlayer.gameObject);
+                onLifeLost?.Invoke(currentLifes);
+                Destroy(spawnedPlayerPosition.gameObject);
                 if (currentLifes <= 0)
                 {
                     GetComponent<LoadNextScene>().Load();
                     yield break;
                 }
 
-                spawnedPlayer = null;
+                spawnedPlayerPosition = null;
+                player = null;
                 for (int i = 0; i < spawnedEnemies.Count; i++)
                 {
                     spawnedEnemies[i].SetAttackTarget(null);
@@ -96,6 +105,8 @@ namespace Retro.Managers
 
         private void OnDestroy()
         {
+            onLifeLost = null;
+
             GameObject obj;
             for (int i = 0; i < spawnedEnemies.Count; i++)
             {

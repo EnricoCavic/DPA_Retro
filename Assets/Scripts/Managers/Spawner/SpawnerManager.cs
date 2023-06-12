@@ -67,7 +67,7 @@ namespace Retro.Managers
             yield return null;
 
             float randomWait;
-            while (gameplayManager.spawnedPlayer != null)
+            while (gameplayManager.spawnedPlayerPosition != null)
             {
                 SpawnEnemies(spawnConfigs);
                 randomWait = Random.Range(spawnConfigs.interval, spawnConfigs.interval * 2);
@@ -107,7 +107,7 @@ namespace Retro.Managers
                 EnemyCHaracterRoutine spawned = obj.GetComponent<EnemyCHaracterRoutine>();
                 spawned.myPool = poolInstance.pool;
                 spawned.health.onCharacterDied += OnCharDied;
-                spawned.SetAttackTarget(gameplayManager.spawnedPlayer);
+                spawned.SetAttackTarget(gameplayManager.spawnedPlayerPosition);
                 spawned.health.ResetHP();
                 spawnRound.Add(spawned);
             }

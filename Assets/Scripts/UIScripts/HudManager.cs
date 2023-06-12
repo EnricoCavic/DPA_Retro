@@ -26,7 +26,7 @@ public class HudManager : MonoBehaviour
 
     private void Update()
     {
-        if (gameplayManager.spawnedPlayer == null) return;
+        if (gameplayManager.spawnedPlayerPosition == null) return;
 
     }
 
@@ -34,7 +34,7 @@ public class HudManager : MonoBehaviour
     {
         
 
-        Debug.Log(gameplayManager.spawnedPlayer.GetComponent<CharacterHealth>().currentHp);
+        Debug.Log(gameplayManager.spawnedPlayerPosition.GetComponent<CharacterHealth>().currentHp);
     }
 
 

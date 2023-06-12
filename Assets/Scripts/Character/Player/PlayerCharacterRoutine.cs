@@ -16,6 +16,9 @@ namespace Retro.Character
         private PlayerInput playerInput;
         private Sequence mySequence;
 
+        public float rewindCooldown = 2f;
+        public float currentRewindCooldown;
+
         public override void Initialize()
         {
             base.Initialize();
@@ -26,6 +29,7 @@ namespace Retro.Character
         private void OnEnable()
         {
             if (!init) Initialize();
+            currentRewindCooldown = rewindCooldown;
             inputHandler.OnFireStart += FireInput;
             playerInput.OnSpecialStart += RewindInput;
         }
@@ -42,6 +46,7 @@ namespace Retro.Character
 
         private void Update()
         {
+            currentRewindCooldown += Time.deltaTime;
             switch(currentRoutine)
             {
                 case PlayerRoutine.Moving:
@@ -64,7 +69,9 @@ namespace Retro.Character
         public void RewindInput()
         {
             if (currentRoutine != PlayerRoutine.Moving) return;
+            if (currentRewindCooldown < rewindCooldown) return;
 
+            currentRewindCooldown = 0f;
             capsuleCollider.enabled = false;
             movement.Stop();
             timeRetro.Rewind();
