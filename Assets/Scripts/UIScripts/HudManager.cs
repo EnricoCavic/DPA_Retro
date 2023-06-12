@@ -14,6 +14,7 @@ public class HudManager : MonoBehaviour
     List<Sprite> healthSequence;
 
     public Image life;
+    List<Sprite> lifeSequence;
 
     private GameplayManager gameplayManager;
 
@@ -22,19 +23,27 @@ public class HudManager : MonoBehaviour
     {
         gameplayManager = this.GetComponent<GameplayManager>();
         healthSequence = health.GetComponent<UISpriteSequence>().sprites;
+        lifeSequence = life.GetComponent<UISpriteSequence>().sprites;
     }
 
     private void Update()
     {
         if (gameplayManager.spawnedPlayerPosition == null) return;
 
+        HealthUpdate();
+        LifeUpdate();
     }
 
-    void Health()
+    void HealthUpdate()
     {
-        
+        int currentHp = gameplayManager.spawnedPlayer.GetComponent<CharacterHealth>().currentHp - 1;
+        health.sprite = healthSequence[currentHp];
+    }
 
-        Debug.Log(gameplayManager.spawnedPlayerPosition.GetComponent<CharacterHealth>().currentHp);
+    void LifeUpdate()
+    {
+        int currentLife = gameplayManager.currentLifes - 1;
+        life.sprite = lifeSequence[currentLife];
     }
 
 
