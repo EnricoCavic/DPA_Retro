@@ -36,7 +36,7 @@ public class HudManager : MonoBehaviour
 
     void HealthUpdate()
     {
-        int currentHp = gameplayManager.spawnedPlayer.GetComponent<CharacterHealth>().currentHp - 1;
+        int currentHp = gameplayManager.spawnedPlayerPosition.GetComponent<CharacterHealth>().currentHp - 1;
         health.sprite = healthSequence[currentHp];
     }
 
