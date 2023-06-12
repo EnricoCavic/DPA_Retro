@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55515c169272b62468dc37eaa0f4b31c, type: 3}
   m_Name: Enemy1Attributes
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 3
   rotationSpeed: 3
   speed: 4
   acceleration: 10

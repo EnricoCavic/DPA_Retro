@@ -71,19 +71,19 @@ namespace Retro.Managers
             }
         }
 
-        private void DestroyPlayer()
+        private void DestroyPlayer(GameObject player)
         {
             StartCoroutine(DestroyCoroutine());
             IEnumerator DestroyCoroutine()
             {
                 currentLifes--;
+                Destroy(spawnedPlayer.gameObject);
                 if (currentLifes <= 0)
                 {
                     GetComponent<LoadNextScene>().Load();
                     yield break;
                 }
 
-                Destroy(spawnedPlayer.gameObject);
                 spawnedPlayer = null;
                 for (int i = 0; i < spawnedEnemies.Count; i++)
                 {
@@ -91,6 +91,20 @@ namespace Retro.Managers
                 }
                 yield return new WaitForSeconds(1f);
                 SpawnPlayer();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            GameObject obj;
+            for (int i = 0; i < spawnedEnemies.Count; i++)
+            {
+                var enemy = spawnedEnemies[i];
+                if (enemy.released) continue;
+
+                enemy.released = true;
+                obj = enemy.gameObject;
+                enemy.myPool.Release(obj);
             }
         }
     }

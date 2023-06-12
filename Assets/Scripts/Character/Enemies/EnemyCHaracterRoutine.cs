@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Retro.Character
 {
@@ -15,16 +16,11 @@ namespace Retro.Character
 
         public EnemyRoutine currentRoutine = EnemyRoutine.None;
 
+        public ObjectPool<GameObject> myPool;
+        public bool released;
         private float distanceToTarget;
         private float currentFireInterval;
         private Sequence mySequence;
-
-        private void Start()
-        {
-            currentRoutine = EnemyRoutine.Chasing;
-            var inputs = (EnemyInput)inputHandler;
-            inputs.attackTarget = attackTarget;
-        }
 
         public void SetAttackTarget(Transform _newTarget)
         {
@@ -36,6 +32,10 @@ namespace Retro.Character
         private void OnEnable()
         {
             if (!init) Initialize();
+            released = false;
+            currentRoutine = EnemyRoutine.Chasing;
+            var inputs = (EnemyInput)inputHandler;
+            inputs.attackTarget = attackTarget;
         }
 
         private void Update()

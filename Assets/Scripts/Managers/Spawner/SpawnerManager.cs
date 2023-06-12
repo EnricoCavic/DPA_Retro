@@ -13,6 +13,8 @@ namespace Retro.Managers
         public bool overrideAllconfigs;
         private GameplayManager gameplayManager;
 
+        private ObjectPoolManager poolManager;
+
         [field: SerializeField] public int maxSpawnCicle { get; set; }
         [field: SerializeField] public int spawnRoundQuantity { get; set; }
         [field: SerializeField] public float interval { get; set; }
@@ -32,6 +34,7 @@ namespace Retro.Managers
         private void Start()
         {
             gameplayManager = GameplayManager.Instance;
+            poolManager = ObjectPoolManager.Instance;
         }
 
         [ContextMenu("Spawn")]
@@ -63,10 +66,11 @@ namespace Retro.Managers
 
             yield return null;
 
-            while(gameplayManager.spawnedPlayer != null)
+            float randomWait;
+            while (gameplayManager.spawnedPlayer != null)
             {
                 SpawnEnemies(spawnConfigs);
-                float randomWait = Random.Range(0, spawnConfigs.interval);
+                randomWait = Random.Range(spawnConfigs.interval, spawnConfigs.interval * 2);
                 yield return new WaitForSeconds(randomWait);
             }
         }
@@ -94,10 +98,17 @@ namespace Retro.Managers
                 enemyRoutine.projectileData = spawnConfigs.spawnableConfigs[randomAttribute].projectile;
                 enemyRoutine.attributeData = spawnConfigs.spawnableConfigs[randomAttribute].characterAttributes;
 
+                var poolInstance = poolManager.GetPoolInstance(spawnConfigs.prefab);
+                var obj = poolInstance.pool.Get();
+                obj.transform.position = spawnPosition;
+                obj.transform.rotation = transform.rotation;
+                obj.SetActive(true);
 
-                EnemyCHaracterRoutine spawned = Instantiate(toBeSpawned, spawnPosition, transform.rotation).GetComponent<EnemyCHaracterRoutine>();
-                spawned.health.onCharacterDied += () => gameplayManager.spawnedEnemies.Remove(spawned);
+                EnemyCHaracterRoutine spawned = obj.GetComponent<EnemyCHaracterRoutine>();
+                spawned.myPool = poolInstance.pool;
+                spawned.health.onCharacterDied += OnCharDied;
                 spawned.SetAttackTarget(gameplayManager.spawnedPlayer);
+                spawned.health.ResetHP();
                 spawnRound.Add(spawned);
             }
 
@@ -105,6 +116,14 @@ namespace Retro.Managers
             allSpawned.Add(spawnRound);
         }
 
+        public void OnCharDied(GameObject character)
+        {
+            var enemy = character.GetComponent<EnemyCHaracterRoutine>();
+            if (enemy.released) return;
+            enemy.released = true;
+            gameplayManager.spawnedEnemies.Remove(enemy);
+            enemy.myPool.Release(character);
 
+        }
     }
 }
