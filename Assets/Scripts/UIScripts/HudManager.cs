@@ -41,7 +41,7 @@ public class HudManager : MonoBehaviour
         //Debug.Log(gameplayManager.currentRewindCooldown);
 
         int cooldownValue = Mathf.FloorToInt(gameplayManager.currentRewindCooldown * 10f) - 1;
-        if (cooldownValue < 0) return;
+        if (cooldownValue < 0) cooldownValue = 0;
 
         Debug.Log(cooldownValue);
 
