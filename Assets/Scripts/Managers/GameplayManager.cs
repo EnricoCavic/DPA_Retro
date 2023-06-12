@@ -17,7 +17,7 @@ namespace Retro.Managers
 
         public Action<int> onLifeLost;
 
-        public float currentRewindCooldown => player != null ? player.currentRewindCooldown : 1f;
+        public float currentRewindCooldown => player != null ? player.currentRewindCooldown / player.rewindCooldown : 1f;
 
         public List<EnemyCHaracterRoutine> spawnedEnemies;
         private List<SpawnerManager> spawners;
@@ -42,7 +42,15 @@ namespace Retro.Managers
         {
             spawnedPlayerPosition = Instantiate(playerPrefab).transform;
             player = spawnedPlayerPosition.GetComponent<PlayerCharacterRoutine>();
+            
             player.health.onCharacterDied += DestroyPlayer;
+
+            var hud = GetComponent<HudManager>();
+
+            onLifeLost += hud.LifeUpdate;
+            player.health.onCharacterDamage += hud.HealthUpdate;
+
+            hud.HealthUpdate(player.attributeData.maxHealth);
 
             for (int i = 0; i < spawnedEnemies.Count; i++)
             {

@@ -9,6 +9,7 @@ using Retro.Character;
 public class HudManager : MonoBehaviour
 {
     public Image cooldown;
+    List<Sprite> cooldownSequence;
 
     public Image health;
     List<Sprite> healthSequence;
@@ -19,30 +20,52 @@ public class HudManager : MonoBehaviour
     private GameplayManager gameplayManager;
 
 
-    private void Start()
+    private void Awake()
     {
         gameplayManager = this.GetComponent<GameplayManager>();
+        
         healthSequence = health.GetComponent<UISpriteSequence>().sprites;
         lifeSequence = life.GetComponent<UISpriteSequence>().sprites;
+        cooldownSequence = cooldown.GetComponent<UISpriteSequence>().sprites;
     }
+
+    private void Start()
+    {
+
+    }
+
 
     private void Update()
     {
-        if (gameplayManager.spawnedPlayerPosition == null) return;
+        //cooldownSequence.Count
+        //Debug.Log(gameplayManager.currentRewindCooldown);
 
-        HealthUpdate();
-        LifeUpdate();
+        int cooldownValue = Mathf.FloorToInt(gameplayManager.currentRewindCooldown * 10f) - 1;
+        if (cooldownValue < 0) return;
+
+        Debug.Log(cooldownValue);
+
+        cooldown.sprite = cooldownSequence[cooldownValue];
+
+
     }
 
-    void HealthUpdate()
+
+    public void HealthUpdate(int current)
     {
-        int currentHp = gameplayManager.spawnedPlayerPosition.GetComponent<CharacterHealth>().currentHp - 1;
+        int currentHp = current -1;
+        if (currentHp < 0) return;
+        
+        //int currentHp = gameplayManager.spawnedPlayerPosition.GetComponent<CharacterHealth>().currentHp - 1;
         health.sprite = healthSequence[currentHp];
     }
 
-    void LifeUpdate()
+    public void LifeUpdate(int current)
     {
-        int currentLife = gameplayManager.currentLifes - 1;
+        int currentLife = current -1;
+        if (currentLife < 0) return;
+
+        //int currentLife = gameplayManager.currentLifes - 1;
         life.sprite = lifeSequence[currentLife];
     }
 

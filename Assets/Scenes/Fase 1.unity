@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9cb9cac2bddadfd44b251ab2b9a1aeed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6642aa37786891419bb5796455ec532, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -291,10 +291,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: c6642aa37786891419bb5796455ec532, type: 3}
-  - {fileID: 21300000, guid: 206c85f080a5f41499ada6eb63c3639a, type: 3}
-  - {fileID: 21300000, guid: 69ed289630aca4b41b3915ea54390315, type: 3}
   - {fileID: 21300000, guid: 9cb9cac2bddadfd44b251ab2b9a1aeed, type: 3}
+  - {fileID: 21300000, guid: 69ed289630aca4b41b3915ea54390315, type: 3}
+  - {fileID: 21300000, guid: 206c85f080a5f41499ada6eb63c3639a, type: 3}
+  - {fileID: 21300000, guid: c6642aa37786891419bb5796455ec532, type: 3}
 --- !u!1 &447274427
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +614,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8359977186932213528, guid: 5320189e7db97694e8d436d44dad2631, type: 3}
-  spawnedPlayer: {fileID: 0}
+  spawnedPlayerPosition: {fileID: 0}
+  player: {fileID: 0}
   rewindTimeScale: 0.1
   currentLifes: 3
   spawnedEnemies: []
@@ -649,7 +650,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: {fileID: 1286933801}
   health: {fileID: 138839129}
-  healthSequence: []
   life: {fileID: 925932683}
 --- !u!1 &582021173
 GameObject:
@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6679595d59c4cab4abcb6b75ee225e7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e1b39707b937394eb2049e0cd62d053, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1256,9 +1256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 4e1b39707b937394eb2049e0cd62d053, type: 3}
-  - {fileID: 21300000, guid: 2992c378eca90b747a190d0209c9bf80, type: 3}
   - {fileID: 21300000, guid: 6679595d59c4cab4abcb6b75ee225e7a, type: 3}
+  - {fileID: 21300000, guid: 2992c378eca90b747a190d0209c9bf80, type: 3}
+  - {fileID: 21300000, guid: 4e1b39707b937394eb2049e0cd62d053, type: 3}
 --- !u!1 &972923277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,16 +1877,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 2ddc4576f3f67c64f810801a4d95e3fc, type: 3}
-  - {fileID: 21300000, guid: d36328c97ebe4e545bdd3185a5039388, type: 3}
-  - {fileID: 21300000, guid: d5441f67e8d42724f81f35b0d2ddc0e5, type: 3}
-  - {fileID: 21300000, guid: d608bd8bf31e00649bcdbce888d74803, type: 3}
-  - {fileID: 21300000, guid: d8dc5f00d5f9ba146a52933264b27f05, type: 3}
-  - {fileID: 21300000, guid: 7334b559bdc20f0488f9dd145c6a7666, type: 3}
-  - {fileID: 21300000, guid: 0c1dbc75824e788469e8af11d2f6b0f1, type: 3}
-  - {fileID: 21300000, guid: b9b1a390324f148449fdc4d40c2f143f, type: 3}
-  - {fileID: 21300000, guid: 88acc8a2bde23864c8e45dc833d9d4fe, type: 3}
   - {fileID: 21300000, guid: 13f15ec2192d24444adbd6bf3455d64b, type: 3}
+  - {fileID: 21300000, guid: 88acc8a2bde23864c8e45dc833d9d4fe, type: 3}
+  - {fileID: 21300000, guid: b9b1a390324f148449fdc4d40c2f143f, type: 3}
+  - {fileID: 21300000, guid: 0c1dbc75824e788469e8af11d2f6b0f1, type: 3}
+  - {fileID: 21300000, guid: 7334b559bdc20f0488f9dd145c6a7666, type: 3}
+  - {fileID: 21300000, guid: d8dc5f00d5f9ba146a52933264b27f05, type: 3}
+  - {fileID: 21300000, guid: d608bd8bf31e00649bcdbce888d74803, type: 3}
+  - {fileID: 21300000, guid: d5441f67e8d42724f81f35b0d2ddc0e5, type: 3}
+  - {fileID: 21300000, guid: d36328c97ebe4e545bdd3185a5039388, type: 3}
+  - {fileID: 21300000, guid: 2ddc4576f3f67c64f810801a4d95e3fc, type: 3}
 --- !u!1 &1332209313
 GameObject:
   m_ObjectHideFlags: 0
