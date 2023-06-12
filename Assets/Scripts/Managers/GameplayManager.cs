@@ -14,15 +14,22 @@ namespace Retro.Managers
         public int currentLifes = 3;
 
         public List<EnemyCHaracterRoutine> spawnedEnemies;
+        private List<SpawnerManager> spawners;
 
         private void Awake()
         {
             if (!InstanceSetup(this)) return;
+
+            spawners = new(GetComponentsInChildren<SpawnerManager>());
         }
 
         private void Start()
         {
             SpawnPlayer();
+            for (int i = 0; i < spawners.Count; i++)
+            {
+                spawners[i].Spawn();
+            }
         }
 
         private void SpawnPlayer()
@@ -76,7 +83,7 @@ namespace Retro.Managers
                     yield break;
                 }
 
-                //Destroy(spawnedPlayer.gameObject);
+                Destroy(spawnedPlayer.gameObject);
                 spawnedPlayer = null;
                 for (int i = 0; i < spawnedEnemies.Count; i++)
                 {

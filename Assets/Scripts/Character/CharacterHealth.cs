@@ -8,6 +8,7 @@ namespace Retro.Character
     public class CharacterHealth : MonoBehaviour
     {
         [HideInInspector] public CharacterAttributesSO attributeData;
+
         public int currentHp { get; private set; }
         public Action onCharacterDied;
 
@@ -23,15 +24,12 @@ namespace Retro.Character
             {
                 Destroy(gameObject);
                 onCharacterDied?.Invoke();
+                onCharacterDied = null;
                 return true;
             }
 
             return false;
         }
 
-        private void OnDestroy()
-        {
-            onCharacterDied = null;
-        }
     }
 }

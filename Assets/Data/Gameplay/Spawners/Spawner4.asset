@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04890e9f90607b2468e1a3cb73e24d7e, type: 3}
-  m_Name: Spawner1
+  m_Name: Spawner4
   m_EditorClassIdentifier: 
   parentOverride: 0
   <maxSpawnCicle>k__BackingField: 3
-  <spawnRoundQuantity>k__BackingField: 2
-  <interval>k__BackingField: 15
+  <spawnRoundQuantity>k__BackingField: 1
+  <interval>k__BackingField: 20
   <radialRandomness>k__BackingField: 0
   <prefab>k__BackingField: {fileID: 5068338156793116034, guid: e03efb1b7f4dbfc4eba04d55079c5efa, type: 3}
   <spawnableConfigs>k__BackingField:
