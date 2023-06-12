@@ -12,9 +12,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4157552420746867960, guid: 71cfedbf17bd6c0449ff808e0a0e3b7e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: e2b09e55da634384cb2c14288437d42a, type: 2}
     - target: {fileID: 9107165027447931007, guid: 71cfedbf17bd6c0449ff808e0a0e3b7e, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9107165027447931007, guid: 71cfedbf17bd6c0449ff808e0a0e3b7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -108,3 +112,4 @@ MonoBehaviour:
   attackTarget: {fileID: 0}
   routineData: {fileID: 0}
   currentRoutine: 0
+  released: 0

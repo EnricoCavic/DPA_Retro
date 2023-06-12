@@ -6,7 +6,7 @@ namespace Retro.Character
 {
     public class CharacterAnimations : MonoBehaviour
     {
-        private Animator animator;
+        public Animator animator;
 
         private void Awake()
         {
@@ -15,6 +15,7 @@ namespace Retro.Character
 
         public void SetMoveSpeed(float _charMoveSpeed)
         {
+            animator.SetFloat("speed", _charMoveSpeed);
             // altera a variavel de animação de movimentação
             // variavel altera entre as anim idle e movendo
         }
@@ -28,6 +29,7 @@ namespace Retro.Character
         public void DeathAnimation()
         {
             // altera a variavel de trigger de ataque
+            animator.SetTrigger("die");
         }
 
     }

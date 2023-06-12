@@ -93,6 +93,26 @@ namespace Retro.Managers
             {
                 currentLifes--;
                 onLifeLost?.Invoke(currentLifes);
+
+                var chAnimator = player.GetComponent<CharacterAnimations>();
+                chAnimator.DeathAnimation();
+
+
+                var clips = chAnimator.animator.runtimeAnimatorController.animationClips;
+
+                AnimationClip clip = new();
+
+                foreach(var c in clips)
+                {
+                    if(c.name == "die")
+                    {
+                        clip = c;
+                        break;
+                    }
+                }
+
+                yield return new WaitForSeconds(clip.length);
+
                 Destroy(spawnedPlayerPosition.gameObject);
                 if (currentLifes <= 0)
                 {
