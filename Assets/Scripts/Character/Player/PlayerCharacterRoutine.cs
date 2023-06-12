@@ -47,6 +47,9 @@ namespace Retro.Character
         private void Update()
         {
             currentRewindCooldown += Time.deltaTime;
+            if (currentRewindCooldown >= rewindCooldown)
+                currentRewindCooldown = rewindCooldown;
+
             switch(currentRoutine)
             {
                 case PlayerRoutine.Moving:
