@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56b6d0f206feb1e418f8563272f142cb, type: 3}
-  m_Name: SniperSlowShot
+  m_Name: SniperSlowShotSpartan
   m_EditorClassIdentifier: 
   <characterAttributes>k__BackingField: {fileID: 11400000, guid: 1f77612edb0d34341849a76702d0256b, type: 2}
   <characterRoutine>k__BackingField: {fileID: 11400000, guid: 7a7da3f4fda98c140ad466460cb7333a, type: 2}

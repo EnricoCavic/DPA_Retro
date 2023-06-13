@@ -8,6 +8,7 @@ namespace Retro.Gameplay
         public float speed;
         public float lifeTimeInSeconds;
         public Vector3 scale;
+        public Vector3 rotation;
         public Material material;
         public Mesh mesh;
     }

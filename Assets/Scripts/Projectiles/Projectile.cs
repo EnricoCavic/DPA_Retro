@@ -24,10 +24,14 @@ namespace Retro.Gameplay
         {
             data = _data;
             transform.localScale = data.scale;
+            //transform.localEulerAngles = data.rotation;
+
             if (meshRenderer == null) 
-                meshRenderer = GetComponent<MeshRenderer>();
+                meshRenderer = GetComponentInChildren<MeshRenderer>();
             if(meshFilter == null)
-                meshFilter = GetComponent<MeshFilter>();
+                meshFilter = GetComponentInChildren<MeshFilter>();
+
+            meshRenderer.transform.eulerAngles = data.rotation;
             meshRenderer.material = data.material;
             meshFilter.mesh = data.mesh;
         }
