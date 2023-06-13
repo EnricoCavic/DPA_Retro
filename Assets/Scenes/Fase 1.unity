@@ -2993,112 +2993,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7341753230699692487, guid: f57762bd25e54a744a0936d118133c0c, type: 3}
   m_PrefabInstance: {fileID: 524662087}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &530714771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 530714772}
-  - component: {fileID: 530714773}
-  m_Layer: 0
-  m_Name: SpawnerTeste (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &530714772
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530714771}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.2, y: 0, z: 25.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 557642582}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &530714773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530714771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f10fbb3eef07ba48a772bb74e09840b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overrideAllconfigs: 0
-  <maxSpawnCicle>k__BackingField: 0
-  <spawnRoundQuantity>k__BackingField: 0
-  <interval>k__BackingField: 0
-  <radialRandomness>k__BackingField: 0
-  <prefab>k__BackingField: {fileID: 0}
-  <spawnableConfigs>k__BackingField: []
-  spawnerConfigs:
-  - {fileID: 11400000, guid: 94ddfc337c24e8641879e4f28c5f938f, type: 2}
---- !u!1 &543082745
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 543082746}
-  - component: {fileID: 543082747}
-  m_Layer: 0
-  m_Name: SpawnerTeste (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &543082746
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543082745}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.950001, y: 0, z: -19.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 557642582}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &543082747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543082745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f10fbb3eef07ba48a772bb74e09840b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overrideAllconfigs: 0
-  <maxSpawnCicle>k__BackingField: 0
-  <spawnRoundQuantity>k__BackingField: 0
-  <interval>k__BackingField: 0
-  <radialRandomness>k__BackingField: 0
-  <prefab>k__BackingField: {fileID: 0}
-  <spawnableConfigs>k__BackingField: []
-  spawnerConfigs:
-  - {fileID: 11400000, guid: 77d8542710ee72f4ba594632acdaaa47, type: 2}
 --- !u!1 &557642581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,12 +3026,8 @@ Transform:
   m_Children:
   - {fileID: 1166735185}
   - {fileID: 1226819078}
-  - {fileID: 1096910997}
-  - {fileID: 543082746}
   - {fileID: 1209616835}
   - {fileID: 447274428}
-  - {fileID: 530714772}
-  - {fileID: 1865351291}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6124,59 +6014,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7835486660148380939, guid: 8de84d7dab537054ab66ee6cb7fb43fb, type: 3}
   m_PrefabInstance: {fileID: 1079255367}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1096910996
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1096910997}
-  - component: {fileID: 1096910998}
-  m_Layer: 0
-  m_Name: SpawnerTeste (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1096910997
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096910996}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.25, y: 0, z: -12.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 557642582}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1096910998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096910996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f10fbb3eef07ba48a772bb74e09840b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overrideAllconfigs: 0
-  <maxSpawnCicle>k__BackingField: 0
-  <spawnRoundQuantity>k__BackingField: 0
-  <interval>k__BackingField: 0
-  <radialRandomness>k__BackingField: 0
-  <prefab>k__BackingField: {fileID: 0}
-  <spawnableConfigs>k__BackingField: []
-  spawnerConfigs:
-  - {fileID: 11400000, guid: 788bcb18c75ea804ea40ae865b691bff, type: 2}
 --- !u!1001 &1114976632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10326,59 +10163,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2477797112060160267, guid: dafcf3395320ef04dadc3631a97cef9c, type: 3}
   m_PrefabInstance: {fileID: 1861553244}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1865351290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1865351291}
-  - component: {fileID: 1865351292}
-  m_Layer: 0
-  m_Name: SpawnerTeste (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1865351291
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865351290}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27, y: 0, z: 7.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 557642582}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1865351292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865351290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f10fbb3eef07ba48a772bb74e09840b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overrideAllconfigs: 0
-  <maxSpawnCicle>k__BackingField: 0
-  <spawnRoundQuantity>k__BackingField: 0
-  <interval>k__BackingField: 0
-  <radialRandomness>k__BackingField: 0
-  <prefab>k__BackingField: {fileID: 0}
-  <spawnableConfigs>k__BackingField: []
-  spawnerConfigs:
-  - {fileID: 11400000, guid: 94ddfc337c24e8641879e4f28c5f938f, type: 2}
 --- !u!1001 &1867156325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10885,7 +10669,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 46.55
+    FieldOfView: 35
     OrthographicSize: 7.77
     NearClipPlane: 0.3
     FarClipPlane: 1000
