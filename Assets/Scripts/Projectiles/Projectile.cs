@@ -31,7 +31,7 @@ namespace Retro.Gameplay
             if(meshFilter == null)
                 meshFilter = GetComponentInChildren<MeshFilter>();
 
-            meshRenderer.transform.eulerAngles = data.rotation;
+            meshRenderer.transform.localEulerAngles = data.rotation;
             meshRenderer.material = data.material;
             meshFilter.mesh = data.mesh;
         }
