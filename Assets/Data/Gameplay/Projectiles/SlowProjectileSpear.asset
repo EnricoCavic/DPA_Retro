@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31a67146a393f34cb056f2707546d2f, type: 3}
   m_Name: SlowProjectileSpear
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 20
   lifeTimeInSeconds: 8
   scale: {x: 1.5, y: 1.5, z: 1.5}
   rotation: {x: -90, y: 0, z: 0}
