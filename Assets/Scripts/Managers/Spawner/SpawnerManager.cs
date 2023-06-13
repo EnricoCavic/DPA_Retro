@@ -106,6 +106,9 @@ namespace Retro.Managers
 
                 EnemyCHaracterRoutine spawned = obj.GetComponent<EnemyCHaracterRoutine>();
                 spawned.myPool = poolInstance.pool;
+
+
+
                 spawned.health.onCharacterDied += OnCharDied;
                 spawned.SetAttackTarget(gameplayManager.spawnedPlayerPosition);
                 spawned.health.ResetHP();

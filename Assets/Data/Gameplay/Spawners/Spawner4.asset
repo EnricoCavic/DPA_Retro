@@ -17,7 +17,7 @@ MonoBehaviour:
   <spawnRoundQuantity>k__BackingField: 2
   <interval>k__BackingField: 10
   <radialRandomness>k__BackingField: 0
-  <prefab>k__BackingField: {fileID: 5068338156793116034, guid: e03efb1b7f4dbfc4eba04d55079c5efa, type: 3}
+  <prefab>k__BackingField: {fileID: 5068338156793116034, guid: 9844632d8a1179b4c919bc1c3fc37be1, type: 3}
   <spawnableConfigs>k__BackingField:
   - {fileID: 11400000, guid: 8bc288d7f6b212f49ae549bd28cfbefe, type: 2}
   - {fileID: 11400000, guid: 06121413bbca39e499107af96166f026, type: 2}

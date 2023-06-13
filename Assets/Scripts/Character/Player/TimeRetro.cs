@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public struct PlayerTimestamp
 {
@@ -19,6 +21,9 @@ public struct PlayerTimestamp
 
 public class TimeRetro : MonoBehaviour
 {
+
+    public float colorScale;
+
     private Queue<PlayerTimestamp> playerTimestamps;
     private PlayerCharacterRoutine characterRoutine;
     private GameplayManager gameplayManager;
@@ -32,6 +37,9 @@ public class TimeRetro : MonoBehaviour
 
     private float time;
     private float lastTime;
+
+    
+
 
 
     private void Awake()
@@ -87,17 +95,37 @@ public class TimeRetro : MonoBehaviour
 
     public IEnumerator RewindCo()
     {
+        Volume volume = Camera.main.GetComponent<Volume>();
+
+        ColorAdjustments colorAdj;
+        bool hasColorAdj = false;
+        VolumeParameter<float> originalColor = new VolumeParameter<float>();
+        
+        if (hasColorAdj = volume.profile.TryGet<ColorAdjustments>(out colorAdj)) originalColor.value = 0;
+        
+        float reverseProgress = 0f;
+
         var array = playerTimestamps.ToArray();
-        for (int i = playerTimestamps.Count -1; i >= 0; i--)
-        {
+            for (int i = playerTimestamps.Count -1; i >= 0; i--)
+            {
+                var current = array[i];
+                SetPlayerData(current);
 
-            var current = array[i];
-            SetPlayerData(current);
-            //Debug.Log(current.position);
+                if (hasColorAdj) 
+                {
+                    VolumeParameter<float> newColor = new VolumeParameter<float>();
+                //newColor.value = -180f + Mathf.PingPong(Time.time * Time.timeScale, 360f);
+                //newColor.value = Mathf.Lerp(newColor.value, 180, i / playerTimestamps.Count - 1);
+                reverseProgress = 1f - ((float)i / (playerTimestamps.Count - 1));
+                newColor.value = Mathf.Lerp(0, 180, reverseProgress);
 
-            yield return new WaitForSecondsRealtime(rewindInterval);
+                colorAdj.hueShift.SetValue(newColor);
+                } 
+            
+                yield return new WaitForSecondsRealtime(rewindInterval);
+            }
 
-        }
+        if (hasColorAdj) colorAdj.hueShift.SetValue(originalColor);
 
         gameplayManager.FinishRewind();
         characterRoutine.currentRoutine = PlayerRoutine.Moving;
